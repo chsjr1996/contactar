@@ -2640,7 +2640,7 @@ __webpack_require__.r(__webpack_exports__);
 function Header() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Styles_HeaderComponentStyle__WEBPACK_IMPORTED_MODULE_1__.Header, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Styles_HeaderComponentStyle__WEBPACK_IMPORTED_MODULE_1__.AppTitle, {
-      children: "I'm header"
+      children: "Contactar"
     })
   });
 }
@@ -2659,16 +2659,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ MainLayout)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _Components_Header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Components/Header */ "./resources/js/Components/Header.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Styles_MainLayoutStyle__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Styles/MainLayoutStyle */ "./resources/js/Styles/MainLayoutStyle.js");
+/* harmony import */ var _Components_Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Components/Header */ "./resources/js/Components/Header.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
 
 
 function MainLayout(props) {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Components_Header__WEBPACK_IMPORTED_MODULE_1__.default, {}), props.children]
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Components_Header__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Styles_MainLayoutStyle__WEBPACK_IMPORTED_MODULE_1__.ChildrenContainer, {
+      children: props.children
+    })]
   });
 }
 
@@ -2750,8 +2754,29 @@ var _templateObject, _templateObject2;
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 
-var Header = styled_components__WEBPACK_IMPORTED_MODULE_0__.default.header(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  position: fixed;\n  width: 100%;\n  height: 50px;\n  background-color: #333;\n  padding: 5px;\n"])));
-var AppTitle = styled_components__WEBPACK_IMPORTED_MODULE_0__.default.p(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  text-align: center;\n  font-size: 22px;\n  color: white;\n"])));
+var Header = styled_components__WEBPACK_IMPORTED_MODULE_0__.default.header(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 50px;\n  background-color: #333;\n  box-shadow: 0px 2px 3px 1px #333;\n"])));
+var AppTitle = styled_components__WEBPACK_IMPORTED_MODULE_0__.default.p(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  margin: 0;\n  font-size: 22px;\n  color: white;\n"])));
+
+/***/ }),
+
+/***/ "./resources/js/Styles/MainLayoutStyle.js":
+/*!************************************************!*\
+  !*** ./resources/js/Styles/MainLayoutStyle.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ChildrenContainer": () => (/* binding */ ChildrenContainer)
+/* harmony export */ });
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+var _templateObject;
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+var ChildrenContainer = styled_components__WEBPACK_IMPORTED_MODULE_0__.default.div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  margin-top: 30px;\n"])));
 
 /***/ }),
 
