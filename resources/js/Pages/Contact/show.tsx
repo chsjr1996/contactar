@@ -1,7 +1,7 @@
 import React from "react";
 
-import MainLayout from "../../Layouts/Main";
-import * as S from "../../Styles/ContactPageStyle";
+import MainLayout from "@Layout/Main";
+import * as S from "@Style/ContactPageStyle";
 
 export default function Show() {
   return (

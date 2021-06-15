@@ -1,4 +1,5 @@
 const mix = require("laravel-mix");
+const path = require("path");
 
 /*
  |--------------------------------------------------------------------------
@@ -12,7 +13,20 @@ const mix = require("laravel-mix");
  */
 
 mix
-  .js("resources/js/app.js", "public/js")
+  .ts("resources/js/app.js", "public/js")
   .react()
   .sass("resources/sass/app.scss", "public/css")
   .disableNotifications();
+
+mix.webpackConfig({
+  resolve: {
+    extensions: [".js", ".jsx", "ts", ".tsx"],
+    alias: {
+      "@Root": path.resolve(__dirname, "resources/js"),
+      "@Layout": path.resolve(__dirname, "resources/js/Layouts"),
+      "@Page": path.resolve(__dirname, "resources/js/Pages"),
+      "@Component": path.resolve(__dirname, "resources/js/Components"),
+      "@Style": path.resolve(__dirname, "resources/js/Styles"),
+    },
+  },
+});
