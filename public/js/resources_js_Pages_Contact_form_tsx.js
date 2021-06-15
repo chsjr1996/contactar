@@ -896,6 +896,22 @@ exports.default = Header;
 "use strict";
 
 
+var __assign = this && this.__assign || function () {
+  __assign = Object.assign || function (t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+      s = arguments[i];
+
+      for (var p in s) {
+        if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+      }
+    }
+
+    return t;
+  };
+
+  return __assign.apply(this, arguments);
+};
+
 var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
   if (k2 === undefined) k2 = k;
   Object.defineProperty(o, k2, {
@@ -938,14 +954,17 @@ var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/reac
 
 var core_1 = __webpack_require__(/*! @unform/core */ "./node_modules/@unform/core/dist/index.es.js");
 
-var UInput = function UInput(props) {
+var UInput = function UInput(_a) {
+  var name = _a.name,
+      label = _a.label,
+      placeholder = _a.placeholder,
+      errors = _a.errors;
   var inputRef = react_1.useRef(null);
 
-  var _a = core_1.useField(props.name),
-      fieldName = _a.fieldName,
-      defaultValue = _a.defaultValue,
-      registerField = _a.registerField,
-      error = _a.error;
+  var _b = core_1.useField(name),
+      fieldName = _b.fieldName,
+      defaultValue = _b.defaultValue,
+      registerField = _b.registerField;
 
   react_1.useEffect(function () {
     registerField({
@@ -959,13 +978,32 @@ var UInput = function UInput(props) {
       }
     });
   }, [fieldName, registerField]);
+
+  var inputClasses = function inputClasses() {
+    if (errors && errors[name]) {
+      return "form-control border-danger";
+    }
+
+    return "form-control";
+  };
+
+  var renderError = function renderError() {
+    if (errors && errors[name]) {
+      return react_1["default"].createElement("small", {
+        className: "text-danger"
+      }, errors[name]);
+    }
+  };
+
   return react_1["default"].createElement("div", {
     className: "form-group"
-  }, react_1["default"].createElement("input", {
-    className: "form-control",
+  }, label && react_1["default"].createElement("label", null, label), react_1["default"].createElement("input", __assign({
+    className: inputClasses(),
     ref: inputRef,
     defaultValue: defaultValue
-  }));
+  }, placeholder && {
+    placeholder: placeholder
+  })), renderError());
 };
 
 exports.default = UInput;
@@ -981,6 +1019,22 @@ exports.default = UInput;
 "use strict";
 
 
+var __assign = this && this.__assign || function () {
+  __assign = Object.assign || function (t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+      s = arguments[i];
+
+      for (var p in s) {
+        if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+      }
+    }
+
+    return t;
+  };
+
+  return __assign.apply(this, arguments);
+};
+
 var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
   if (k2 === undefined) k2 = k;
   Object.defineProperty(o, k2, {
@@ -1023,14 +1077,17 @@ var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/reac
 
 var core_1 = __webpack_require__(/*! @unform/core */ "./node_modules/@unform/core/dist/index.es.js");
 
-var UTextArea = function UTextArea(props) {
+var UTextArea = function UTextArea(_a) {
+  var name = _a.name,
+      label = _a.label,
+      placeholder = _a.placeholder,
+      errors = _a.errors;
   var textAreaRef = react_1.useRef(null);
 
-  var _a = core_1.useField(props.name),
-      fieldName = _a.fieldName,
-      defaultValue = _a.defaultValue,
-      registerField = _a.registerField,
-      error = _a.error;
+  var _b = core_1.useField(name),
+      fieldName = _b.fieldName,
+      defaultValue = _b.defaultValue,
+      registerField = _b.registerField;
 
   react_1.useEffect(function () {
     registerField({
@@ -1044,13 +1101,32 @@ var UTextArea = function UTextArea(props) {
       }
     });
   }, [fieldName, registerField]);
+
+  var textAreaClasses = function textAreaClasses() {
+    if (errors && errors[name]) {
+      return "form-control border-danger";
+    }
+
+    return "form-control";
+  };
+
+  var renderError = function renderError() {
+    if (errors && errors[name]) {
+      return react_1["default"].createElement("small", {
+        className: "text-danger"
+      }, errors[name]);
+    }
+  };
+
   return react_1["default"].createElement("div", {
     className: "form-group"
-  }, react_1["default"].createElement("textarea", {
-    className: "form-control",
+  }, label && react_1["default"].createElement("label", null, label), react_1["default"].createElement("textarea", __assign({
+    className: textAreaClasses(),
     ref: textAreaRef,
     defaultValue: defaultValue
-  }));
+  }, placeholder && {
+    placeholder: placeholder
+  })), renderError());
 };
 
 exports.default = UTextArea;
@@ -1181,6 +1257,10 @@ var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/r
 
 var web_1 = __webpack_require__(/*! @unform/web */ "./node_modules/@unform/web/dist/index.es.js");
 
+var inertia_1 = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
+
+var inertia_react_1 = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+
 var Main_1 = __importDefault(__webpack_require__(/*! @Layout/Main */ "./resources/js/Layouts/Main.tsx"));
 
 var S = __importStar(__webpack_require__(/*! @Style/ContactPageStyle */ "./resources/js/Styles/ContactPageStyle.ts"));
@@ -1189,23 +1269,39 @@ var UInput_1 = __importDefault(__webpack_require__(/*! @Component/UInput */ "./r
 
 var UTextArea_1 = __importDefault(__webpack_require__(/*! @Component/UTextArea */ "./resources/js/Components/UTextArea.tsx"));
 
-function Form() {
+var Form = function Form(props) {
+  var errors = inertia_react_1.usePage().props.errors;
+
   var handleSubmit = function handleSubmit(data) {
-    console.log(data);
+    inertia_1.Inertia.post('/contact', data);
   };
+
+  var renderError = function renderError(fieldName) {};
 
   return react_1["default"].createElement(Main_1["default"], null, react_1["default"].createElement(S.Container, null, react_1["default"].createElement(S.SubContainer, null, react_1["default"].createElement(S.Title, null, "I'm contact page"), react_1["default"].createElement(web_1.Form, {
     onSubmit: handleSubmit
   }, react_1["default"].createElement(UInput_1["default"], {
-    name: "name"
+    name: "name",
+    label: "Name",
+    placeholder: "Please insert your name",
+    errors: errors
   }), react_1["default"].createElement(UInput_1["default"], {
-    name: "email"
+    name: "email",
+    label: "E-mail",
+    placeholder: "Please insert your e-mail",
+    errors: errors
   }), react_1["default"].createElement(UInput_1["default"], {
-    name: "phone"
+    name: "phone",
+    label: "Phone",
+    placeholder: "Please insert your phone",
+    errors: errors
   }), react_1["default"].createElement(UTextArea_1["default"], {
-    name: "message"
+    name: "message",
+    label: "Message",
+    placeholder: "Please enter with your message here",
+    errors: errors
   }), react_1["default"].createElement(S.Submit, null, "Send")))));
-}
+};
 
 exports.default = Form;
 
@@ -1246,7 +1342,7 @@ exports.Submit = exports.Title = exports.SubContainer = exports.Container = void
 var styled_components_1 = __importDefault(__webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js"));
 
 exports.Container = styled_components_1["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 100vh;\n"], ["\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 100vh;\n"])));
-exports.SubContainer = styled_components_1["default"].div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  width: 420px;\n  height: 500px;\n  margin: 0 auto;\n  padding: 30px;\n  border: 1px solid lightgray;\n  box-shadow: 1px 1px 5px 1px #ccc;\n"], ["\n  width: 420px;\n  height: 500px;\n  margin: 0 auto;\n  padding: 30px;\n  border: 1px solid lightgray;\n  box-shadow: 1px 1px 5px 1px #ccc;\n"])));
+exports.SubContainer = styled_components_1["default"].div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  width: 500px;\n  height: 550px;\n  margin: 0 auto;\n  padding: 15px;\n  border: 1px solid lightgray;\n  box-shadow: 1px 1px 5px 1px #ccc;\n  overflow-y: scroll;\n"], ["\n  width: 500px;\n  height: 550px;\n  margin: 0 auto;\n  padding: 15px;\n  border: 1px solid lightgray;\n  box-shadow: 1px 1px 5px 1px #ccc;\n  overflow-y: scroll;\n"])));
 exports.Title = styled_components_1["default"].h1(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  font-size: 22px;\n"], ["\n  font-size: 22px;\n"])));
 exports.Submit = styled_components_1["default"].button.attrs(function () {
   return {

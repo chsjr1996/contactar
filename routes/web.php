@@ -14,4 +14,7 @@ use App\Http\Controllers\ContactController;
 |
 */
 
-Route::get('/', [ContactController::class, 'show']);
+Route::prefix('/contact')->group(function () {
+    Route::get('/', [ContactController::class, 'form'])->name('contact.form');
+    Route::post('/', [ContactController::class, 'send'])->name('contact.send');
+});

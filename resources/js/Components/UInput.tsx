@@ -1,14 +1,17 @@
 import React, { useEffect, useRef } from 'react';
 import { useField } from '@unform/core';
+import { InertiaPropErrors } from '@Root/Interfaces/InertiaProps';
 
 interface UInputProps {
   name: string
+  label?: string;
   placeholder?: string;
+  errors?: InertiaPropErrors;
 }
 
-const UInput: React.FC<UInputProps> = (props): JSX.Element => {
+const UInput: React.FC<UInputProps> = ({ name, label, placeholder, errors }): JSX.Element => {
   const inputRef = useRef(null);
-  const { fieldName, defaultValue, registerField, error } = useField(props.name);
+  const { fieldName, defaultValue, registerField } = useField(name);
 
   useEffect(() => {
     registerField({
@@ -23,9 +26,29 @@ const UInput: React.FC<UInputProps> = (props): JSX.Element => {
     });
   }, [fieldName, registerField]);
 
+  const inputClasses = () => {
+    if (errors && errors[name]) {
+      return "form-control border-danger";
+    }
+    return "form-control";
+  }
+
+  const renderError = () => {
+    if (errors && errors[name]) {
+      return <small className="text-danger">{errors[name]}</small>
+    }
+  }
+
   return (
     <div className="form-group">
-      <input className="form-control" ref={inputRef} defaultValue={defaultValue} />
+      { label && <label>{label}</label> }
+      <input
+        className={inputClasses()}
+        ref={inputRef}
+        defaultValue={defaultValue}
+        { ...(placeholder && { placeholder }) }
+      />
+      {renderError()}
     </div>
   )
 }

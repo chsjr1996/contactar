@@ -8,12 +8,13 @@ export const Container = styled.div`
 `;
 
 export const SubContainer = styled.div`
-  width: 420px;
-  height: 500px;
+  width: 500px;
+  height: 550px;
   margin: 0 auto;
-  padding: 30px;
+  padding: 15px;
   border: 1px solid lightgray;
   box-shadow: 1px 1px 5px 1px #ccc;
+  overflow-y: scroll;
 `;
 
 export const Title = styled.h1`
