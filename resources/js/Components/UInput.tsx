@@ -23,7 +23,11 @@ const UInput: React.FC<UInputProps> = (props): JSX.Element => {
     });
   }, [fieldName, registerField]);
 
-  return <input ref={inputRef} defaultValue={defaultValue} />
+  return (
+    <div className="form-group">
+      <input className="form-control" ref={inputRef} defaultValue={defaultValue} />
+    </div>
+  )
 }
 
 export default UInput;

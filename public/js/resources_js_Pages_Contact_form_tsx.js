@@ -959,10 +959,13 @@ var UInput = function UInput(props) {
       }
     });
   }, [fieldName, registerField]);
-  return react_1["default"].createElement("input", {
+  return react_1["default"].createElement("div", {
+    className: "form-group"
+  }, react_1["default"].createElement("input", {
+    className: "form-control",
     ref: inputRef,
     defaultValue: defaultValue
-  });
+  }));
 };
 
 exports.default = UInput;
@@ -1041,10 +1044,13 @@ var UTextArea = function UTextArea(props) {
       }
     });
   }, [fieldName, registerField]);
-  return react_1["default"].createElement("textarea", {
+  return react_1["default"].createElement("div", {
+    className: "form-group"
+  }, react_1["default"].createElement("textarea", {
+    className: "form-control",
     ref: textAreaRef,
     defaultValue: defaultValue
-  });
+  }));
 };
 
 exports.default = UTextArea;
@@ -1244,7 +1250,8 @@ exports.SubContainer = styled_components_1["default"].div(templateObject_2 || (t
 exports.Title = styled_components_1["default"].h1(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  font-size: 22px;\n"], ["\n  font-size: 22px;\n"])));
 exports.Submit = styled_components_1["default"].button.attrs(function () {
   return {
-    type: "subimt"
+    type: "submit",
+    className: "btn btn-primary w-100"
   };
 })(templateObject_4 || (templateObject_4 = __makeTemplateObject([""], [""])));
 var templateObject_1, templateObject_2, templateObject_3, templateObject_4;

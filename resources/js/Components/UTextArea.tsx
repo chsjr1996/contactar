@@ -22,7 +22,11 @@ const UTextArea: React.FC<UInputProps> = (props): JSX.Element => {
     });
   }, [fieldName, registerField]);
 
-  return <textarea ref={textAreaRef} defaultValue={defaultValue} />
+  return (
+    <div className="form-group">
+      <textarea className="form-control" ref={textAreaRef} defaultValue={defaultValue} />
+    </div>
+  )
 }
 
 export default UTextArea;

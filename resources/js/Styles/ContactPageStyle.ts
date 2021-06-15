@@ -21,5 +21,6 @@ export const Title = styled.h1`
 `;
 
 export const Submit = styled.button.attrs(() => ({
-  type: "subimt",
+  type: "submit",
+  className: "btn btn-primary w-100",
 }))``;
