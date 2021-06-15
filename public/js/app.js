@@ -37775,13 +37775,13 @@ module.exports = function getSideChannel() {
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var map = {
-	"./Contact/show": [
-		"./resources/js/Pages/Contact/show.tsx",
-		"resources_js_Pages_Contact_show_tsx"
+	"./Contact/form": [
+		"./resources/js/Pages/Contact/form.tsx",
+		"resources_js_Pages_Contact_form_tsx"
 	],
-	"./Contact/show.tsx": [
-		"./resources/js/Pages/Contact/show.tsx",
-		"resources_js_Pages_Contact_show_tsx"
+	"./Contact/form.tsx": [
+		"./resources/js/Pages/Contact/form.tsx",
+		"resources_js_Pages_Contact_form_tsx"
 	]
 };
 function webpackAsyncContext(req) {
@@ -37950,7 +37950,7 @@ module.exports = webpackAsyncContext;
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if (chunkId === "resources_js_Pages_Contact_show_tsx") return "js/" + chunkId + ".js";
+/******/ 			if (chunkId === "resources_js_Pages_Contact_form_tsx") return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

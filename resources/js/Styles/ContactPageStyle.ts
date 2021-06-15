@@ -19,3 +19,7 @@ export const SubContainer = styled.div`
 export const Title = styled.h1`
   font-size: 22px;
 `;
+
+export const Submit = styled.button.attrs(() => ({
+  type: "subimt",
+}))``;

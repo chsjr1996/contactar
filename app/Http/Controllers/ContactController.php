@@ -15,7 +15,7 @@ class ContactController extends Controller
      */
     public function show()
     {
-        return Inertia::render('Contact/show');
+        return Inertia::render('Contact/form');
     }
 
     /**
