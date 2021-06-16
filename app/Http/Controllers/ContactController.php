@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SendRequest;
-use App\Models\Contact;
-use App\Services\UploadFileService\UploadFileService;
+use App\Repositories\Contracts\ContactRepositoryInterface;
+use App\Services\Interfaces\UploadServiceInterface;
 use Inertia\Inertia;
 use Inertia\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -27,14 +27,25 @@ class ContactController extends Controller
      * @param SendRequest $request
      * @return RedirectResponse
      */
-    public function send(SendRequest $request): RedirectResponse
-    {
-        $filePath = UploadFileService::run($request->file('attachment'), 'files');
+    public function send(
+        SendRequest $request,
+        ContactRepositoryInterface $repository,
+        UploadServiceInterface $uploadService
+    ): RedirectResponse {
+        // 1º Step: Store file
+        $filePath = $uploadService::run($request->file('attachment'), 'files');
 
+        // 2º Step: Get all data
         $data = $request->toArray();
         $data['file_name'] = $filePath;
+        unset($data['attachment']);
 
-        (new Contact($data))->save();
+        // 3º Step: Store data
+        $repository->insert($data);
+
+        // 4º Send mail
+
+        // Last Step: Redirect
         return redirect('/contact');
     }
 }
