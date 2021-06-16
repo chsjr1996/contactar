@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SendRequest;
+use App\Mail\ContactFormMailable;
 use App\Repositories\Contracts\ContactRepositoryInterface;
 use App\Services\Interfaces\UploadServiceInterface;
 use Inertia\Inertia;
 use Inertia\Response;
+use Mail;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class ContactController extends Controller
@@ -44,6 +46,12 @@ class ContactController extends Controller
         $repository->insert($data);
 
         // 4º Send mail
+        Mail::to(env('MAIL_TO_ADDRESS'))->send(new ContactFormMailable(
+            $data['name'],
+            $data['email'],
+            $data['phone'],
+            $data['message']
+        ));
 
         // Last Step: Redirect
         return redirect('/contact');
