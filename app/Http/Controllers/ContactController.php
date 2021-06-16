@@ -50,7 +50,8 @@ class ContactController extends Controller
             $data['name'],
             $data['email'],
             $data['phone'],
-            $data['message']
+            $data['message'],
+            $filePath
         ));
 
         // Last Step: Redirect

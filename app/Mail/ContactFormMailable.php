@@ -23,17 +23,21 @@ class ContactFormMailable extends Mailable
     /** @var string */
     public $content;
 
+    /** @var string */
+    private $file_path;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($name, $email, $phone, $content)
+    public function __construct($name, $email, $phone, $content, $file_path)
     {
         $this->name = $name;
         $this->email = $email;
         $this->phone = $phone;
         $this->content = $content;
+        $this->file_path = $file_path;
     }
 
     /**
@@ -44,6 +48,7 @@ class ContactFormMailable extends Mailable
     public function build()
     {
         return $this->from(env('MAIL_FROM_ADDRESS'))
-            ->view('emails.contact-form');
+            ->view('emails.contact-form')
+            ->attach(storage_path('app/' . $this->file_path));
     }
 }
