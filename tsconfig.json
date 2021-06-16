@@ -15,6 +15,7 @@
       "@Page/*": ["Pages/*"],
       "@Component/*": ["Components/*"],
       "@Style/*": ["Styles/*"],
+      "@Service/*": ["Services/*"],
     }
   }
 }

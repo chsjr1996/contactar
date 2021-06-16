@@ -28,6 +28,7 @@ mix.webpackConfig({
       "@Page": path.resolve(__dirname, "resources/js/Pages"),
       "@Component": path.resolve(__dirname, "resources/js/Components"),
       "@Style": path.resolve(__dirname, "resources/js/Styles"),
+      "@Service": path.resolve(__dirname, "resources/js/Services"),
     },
   },
 });
