@@ -5,24 +5,30 @@ import { InertiaPropErrors } from '@Root/Interfaces/InertiaProps';
 interface UInputProps {
   name: string
   label?: string;
+  type?: 'text' | 'email' | 'file';
   placeholder?: string;
+  required?: boolean;
   errors?: InertiaPropErrors;
 }
 
-const UInput: React.FC<UInputProps> = ({ name, label, placeholder, errors }): JSX.Element => {
+const UInput: React.FC<UInputProps> = (props): JSX.Element => {
+  const {
+    name,
+    label,
+    type,
+    placeholder,
+    required,
+    errors
+  } = props;
+
   const inputRef = useRef(null);
   const { fieldName, defaultValue, registerField } = useField(name);
 
   useEffect(() => {
     registerField({
       name: fieldName,
-      ref: inputRef,
-      getValue: ref => {
-        return ref.current.value
-      },
-      setValue: (ref, value) => {
-        ref.current.value = value
-      }
+      ref: inputRef.current,
+      path: type === 'file' ? 'files[0]' : 'value',
     });
   }, [fieldName, registerField]);
 
@@ -43,14 +49,20 @@ const UInput: React.FC<UInputProps> = ({ name, label, placeholder, errors }): JS
     <div className="form-group">
       { label && <label>{label}</label> }
       <input
+        type={type}
         className={inputClasses()}
         ref={inputRef}
         defaultValue={defaultValue}
+        { ...(required && { required }) }
         { ...(placeholder && { placeholder }) }
       />
       {renderError()}
     </div>
   )
+}
+
+UInput.defaultProps = {
+  type: 'text'
 }
 
 export default UInput;
