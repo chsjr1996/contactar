@@ -27,7 +27,9 @@ class SendRequest extends FormRequest
             'name' => 'string|required',
             'email' => 'email|required',
             'phone' => 'string|required',
-            'message' => 'string|required'
+            'ip' => 'string|required',
+            'message' => 'string|required',
+            'attachment' => 'file|required',
         ];
     }
 }

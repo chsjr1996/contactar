@@ -4,32 +4,35 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SendRequest;
 use App\Models\Contact;
+use App\Services\UploadFileService\UploadFileService;
 use Inertia\Inertia;
+use Inertia\Response;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class ContactController extends Controller
 {
     /**
-     * Display the specified resource.
+     * Display contact form.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function form()
+    public function form(): Response
     {
         return Inertia::render('Contact/form');
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Receive form data and persist it
      *
      * @param SendRequest $request
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
-    public function send(SendRequest $request)
+    public function send(SendRequest $request): RedirectResponse
     {
+        $filePath = UploadFileService::run($request->file('attachment'), 'files');
+
         $data = $request->toArray();
-        $data['ip'] = $_SERVER['REMOTE_ADDR'];
-        $data['file_name'] = '';
+        $data['file_name'] = $filePath;
 
         (new Contact($data))->save();
         return redirect('/contact');

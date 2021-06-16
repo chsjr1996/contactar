@@ -8,6 +8,7 @@ import * as S from "@Style/ContactPageStyle";
 import { InertiaPropErrors } from "@Interface/InertiaProps";
 import UInput from "@Component/UInput";
 import UTextArea from "@Component/UTextArea";
+import GetIP from "@Service/GetIP";
 
 interface FormProps {
   errors: InertiaPropErrors;
@@ -16,26 +17,30 @@ interface FormProps {
 const Form: React.FC<FormProps> = (props): JSX.Element => {
   const { errors } = usePage<Page>().props
 
-  const handleSubmit = (data: any): void => {
+  const handleSubmit = async (data: any): Promise<void> => {
+    const formData = new FormData();
 
-    Inertia.post('/contact', data);
+    Object.keys(data).map((k: string) => {
+      formData.append(k, data[k]);
+    });
 
-  }
+    formData.append('ip', await GetIP());
 
-  const renderError = (fieldName: string) => {
+    Inertia.post('/contact', formData);
   }
 
   return (
     <MainLayout>
       <S.Container>
         <S.SubContainer>
-          <S.Title>I'm contact page</S.Title>
+          <S.Title>Contact form</S.Title>
 
           <UForm onSubmit={handleSubmit}>
             <UInput name="name" label="Name" placeholder="Please insert your name" errors={errors}/>
             <UInput name="email" label="E-mail" placeholder="Please insert your e-mail" errors={errors}/>
             <UInput name="phone" label="Phone" placeholder="Please insert your phone" errors={errors}/>
             <UTextArea name="message" label="Message" placeholder="Please enter with your message here" errors={errors}/>
+            <UInput type='file' name="attachment" label="Attachment (pdf, doc, docx, odt or txt)" errors={errors}/>
 
             <S.Submit>Send</S.Submit>
           </UForm>
