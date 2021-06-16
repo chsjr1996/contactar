@@ -1080,17 +1080,18 @@ var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/reac
 
 var core_1 = __webpack_require__(/*! @unform/core */ "./node_modules/@unform/core/dist/index.es.js");
 
-var UTextArea = function UTextArea(_a) {
-  var name = _a.name,
-      label = _a.label,
-      placeholder = _a.placeholder,
-      errors = _a.errors;
+var UTextArea = function UTextArea(props) {
+  var name = props.name,
+      label = props.label,
+      placeholder = props.placeholder,
+      required = props.required,
+      errors = props.errors;
   var textAreaRef = react_1.useRef(null);
 
-  var _b = core_1.useField(name),
-      fieldName = _b.fieldName,
-      defaultValue = _b.defaultValue,
-      registerField = _b.registerField;
+  var _a = core_1.useField(name),
+      fieldName = _a.fieldName,
+      defaultValue = _a.defaultValue,
+      registerField = _a.registerField;
 
   react_1.useEffect(function () {
     registerField({
@@ -1127,6 +1128,8 @@ var UTextArea = function UTextArea(_a) {
     className: textAreaClasses(),
     ref: textAreaRef,
     defaultValue: defaultValue
+  }, required && {
+    required: required
   }, placeholder && {
     placeholder: placeholder
   })), renderError());
@@ -1455,27 +1458,32 @@ var Form = function Form(props) {
     name: "name",
     label: "Name",
     placeholder: "Please insert your name",
-    errors: errors
+    errors: errors,
+    required: true
   }), react_1["default"].createElement(UInput_1["default"], {
     name: "email",
     label: "E-mail",
     placeholder: "Please insert your e-mail",
-    errors: errors
+    errors: errors,
+    required: true
   }), react_1["default"].createElement(UInput_1["default"], {
     name: "phone",
     label: "Phone",
     placeholder: "Please insert your phone",
-    errors: errors
+    errors: errors,
+    required: true
   }), react_1["default"].createElement(UTextArea_1["default"], {
     name: "message",
     label: "Message",
     placeholder: "Please enter with your message here",
-    errors: errors
+    errors: errors,
+    required: true
   }), react_1["default"].createElement(UInput_1["default"], {
     type: 'file',
     name: "attachment",
     label: "Attachment (pdf, doc, docx, odt or txt)",
-    errors: errors
+    errors: errors,
+    required: true
   }), react_1["default"].createElement(S.Submit, null, "Send")))));
 };
 

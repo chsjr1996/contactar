@@ -36,11 +36,11 @@ const Form: React.FC<FormProps> = (props): JSX.Element => {
           <S.Title>Contact form</S.Title>
 
           <UForm onSubmit={handleSubmit}>
-            <UInput name="name" label="Name" placeholder="Please insert your name" errors={errors}/>
-            <UInput name="email" label="E-mail" placeholder="Please insert your e-mail" errors={errors}/>
-            <UInput name="phone" label="Phone" placeholder="Please insert your phone" errors={errors}/>
-            <UTextArea name="message" label="Message" placeholder="Please enter with your message here" errors={errors}/>
-            <UInput type='file' name="attachment" label="Attachment (pdf, doc, docx, odt or txt)" errors={errors}/>
+            <UInput name="name" label="Name" placeholder="Please insert your name" errors={errors} required/>
+            <UInput name="email" label="E-mail" placeholder="Please insert your e-mail" errors={errors} required/>
+            <UInput name="phone" label="Phone" placeholder="Please insert your phone" errors={errors} required/>
+            <UTextArea name="message" label="Message" placeholder="Please enter with your message here" errors={errors} required/>
+            <UInput type='file' name="attachment" label="Attachment (pdf, doc, docx, odt or txt)" errors={errors} required/>
 
             <S.Submit>Send</S.Submit>
           </UForm>

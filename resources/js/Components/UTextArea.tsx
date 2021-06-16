@@ -6,10 +6,19 @@ interface UInputProps {
   name: string
   label?: string;
   placeholder?: string;
+  required?: boolean;
   errors?: InertiaPropErrors
 }
 
-const UTextArea: React.FC<UInputProps> = ({ name, label, placeholder, errors }): JSX.Element => {
+const UTextArea: React.FC<UInputProps> = (props): JSX.Element => {
+  const {
+    name,
+    label,
+    placeholder,
+    required,
+    errors
+  } = props;
+
   const textAreaRef = useRef(null);
   const { fieldName, defaultValue, registerField } = useField(name);
 
@@ -46,6 +55,7 @@ const UTextArea: React.FC<UInputProps> = ({ name, label, placeholder, errors }):
         className={textAreaClasses()}
         ref={textAreaRef}
         defaultValue={defaultValue}
+        { ...(required && { required }) }
         { ...(placeholder && {placeholder}) }
       />
       {renderError()}
