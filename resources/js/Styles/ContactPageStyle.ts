@@ -4,17 +4,18 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: calc(100vh - 30px);
 `;
 
 export const SubContainer = styled.div`
   width: 500px;
-  height: 550px;
+  height: 570px;
   margin: 0 auto;
   padding: 15px;
+  overflow-y: scroll;
   border: 1px solid lightgray;
   box-shadow: 1px 1px 5px 1px #ccc;
-  overflow-y: scroll;
+  background-color: white;
 `;
 
 export const Title = styled.h1`

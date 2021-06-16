@@ -1727,8 +1727,8 @@ exports.Submit = exports.Title = exports.SubContainer = exports.Container = void
 
 var styled_components_1 = __importDefault(__webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js"));
 
-exports.Container = styled_components_1["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 100vh;\n"], ["\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 100vh;\n"])));
-exports.SubContainer = styled_components_1["default"].div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  width: 500px;\n  height: 550px;\n  margin: 0 auto;\n  padding: 15px;\n  border: 1px solid lightgray;\n  box-shadow: 1px 1px 5px 1px #ccc;\n  overflow-y: scroll;\n"], ["\n  width: 500px;\n  height: 550px;\n  margin: 0 auto;\n  padding: 15px;\n  border: 1px solid lightgray;\n  box-shadow: 1px 1px 5px 1px #ccc;\n  overflow-y: scroll;\n"])));
+exports.Container = styled_components_1["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: calc(100vh - 30px);\n"], ["\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: calc(100vh - 30px);\n"])));
+exports.SubContainer = styled_components_1["default"].div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  width: 500px;\n  height: 570px;\n  margin: 0 auto;\n  padding: 15px;\n  overflow-y: scroll;\n  border: 1px solid lightgray;\n  box-shadow: 1px 1px 5px 1px #ccc;\n  background-color: white;\n"], ["\n  width: 500px;\n  height: 570px;\n  margin: 0 auto;\n  padding: 15px;\n  overflow-y: scroll;\n  border: 1px solid lightgray;\n  box-shadow: 1px 1px 5px 1px #ccc;\n  background-color: white;\n"])));
 exports.Title = styled_components_1["default"].h1(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  font-size: 22px;\n"], ["\n  font-size: 22px;\n"])));
 exports.Submit = styled_components_1["default"].button.attrs(function () {
   return {
