@@ -18,6 +18,8 @@ class Contact extends Model
         'name',
         'email',
         'phone',
-        'message'
+        'ip',
+        'message',
+        'file_name',
     ];
 }
