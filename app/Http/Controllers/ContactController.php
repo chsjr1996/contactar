@@ -9,8 +9,6 @@ use App\Services\Interfaces\SendMailServiceInterface;
 use App\Services\Interfaces\UploadServiceInterface;
 use Inertia\Inertia;
 use Inertia\Response;
-use Mail;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class ContactController extends Controller
 {
@@ -31,14 +29,14 @@ class ContactController extends Controller
      * @param UploadServiceInterface $uploadService
      * @param SendMailServiceInterface $mailService
      *
-     * @return RedirectResponse
+     * @return Response
      */
     public function send(
         SendRequest $request,
         ContactRepositoryInterface $repository,
         UploadServiceInterface $uploadService,
         SendMailServiceInterface $mailService
-    ): RedirectResponse {
+    ): Response {
         // 1º Step: Store file
         $filePath = $uploadService->run($request->file('attachment'), 'files');
 
@@ -63,7 +61,11 @@ class ContactController extends Controller
             $data
         );
 
-        // Last Step: Redirect
-        return redirect('/contact');
+        // Render component with success message
+        return Inertia::render('Contact/form', [
+            'title' => 'Success!',
+            'message' => 'Your message has sended.',
+            'clearTime' => \Carbon\Carbon::now()
+        ]);
     }
 }

@@ -29,6 +29,9 @@ const UInput: React.FC<UInputProps> = (props): JSX.Element => {
       name: fieldName,
       ref: inputRef.current,
       path: type === 'file' ? 'files[0]' : 'value',
+      clearValue: ref => {
+        ref.value = ''
+      },
     });
   }, [fieldName, registerField]);
 

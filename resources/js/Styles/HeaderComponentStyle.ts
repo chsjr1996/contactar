@@ -13,6 +13,17 @@ export const Header = styled.header`
   box-shadow: 0px 2px 3px 1px #333;
 `;
 
+export const AppIcon = styled.img.attrs(() => ({
+  src: "/img/contactar-small.png",
+  alt: "Application icon",
+}))`
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  width: 35px;
+  height: 35px;
+`;
+
 export const AppTitle = styled.p`
   margin: 0;
   font-size: 22px;

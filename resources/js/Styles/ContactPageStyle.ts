@@ -24,5 +24,5 @@ export const Title = styled.h1`
 
 export const Submit = styled.button.attrs(() => ({
   type: "submit",
-  className: "btn btn-primary w-100",
+  className: "btn btn-primary w-100 font-weight-bold",
 }))``;

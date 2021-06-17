@@ -31,7 +31,10 @@ const UTextArea: React.FC<UInputProps> = (props): JSX.Element => {
       },
       setValue: (ref, value) => {
         ref.current.value = value
-      }
+      },
+      clearValue: ref => {
+          ref.current.value = ''
+      },
     });
   }, [fieldName, registerField]);
 
