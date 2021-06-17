@@ -1,3 +1,5 @@
 *
 !public/
+!test_files/
+!test_files/*
 !.gitignore
