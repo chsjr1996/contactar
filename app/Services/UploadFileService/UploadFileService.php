@@ -15,7 +15,7 @@ class UploadFileService implements UploadServiceInterface
      *
      * @return string
      */
-    public static function run(UploadedFile $file, string $directory, string $name = null): string
+    public function run(UploadedFile $file, string $directory, string $name = null): string
     {
         $fileName = $name;
         $fileExtension = $file->getClientOriginalExtension();

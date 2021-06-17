@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SendRequest;
 use App\Mail\ContactFormMailable;
 use App\Repositories\Contracts\ContactRepositoryInterface;
+use App\Services\Interfaces\SendMailServiceInterface;
 use App\Services\Interfaces\UploadServiceInterface;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -27,15 +28,19 @@ class ContactController extends Controller
      * Receive form data and persist it
      *
      * @param SendRequest $request
+     * @param UploadServiceInterface $uploadService
+     * @param SendMailServiceInterface $mailService
+     *
      * @return RedirectResponse
      */
     public function send(
         SendRequest $request,
         ContactRepositoryInterface $repository,
-        UploadServiceInterface $uploadService
+        UploadServiceInterface $uploadService,
+        SendMailServiceInterface $mailService
     ): RedirectResponse {
         // 1º Step: Store file
-        $filePath = $uploadService::run($request->file('attachment'), 'files');
+        $filePath = $uploadService->run($request->file('attachment'), 'files');
 
         // 2º Step: Get all data
         $data = $request->toArray();
@@ -46,13 +51,17 @@ class ContactController extends Controller
         $repository->insert($data);
 
         // 4º Send mail
-        Mail::to(env('MAIL_TO_ADDRESS'))->send(new ContactFormMailable(
-            $data['name'],
-            $data['email'],
-            $data['phone'],
-            $data['message'],
-            $filePath
-        ));
+        $mailService->run(
+            new ContactFormMailable(
+                $data['name'],
+                $data['email'],
+                $data['phone'],
+                $data['message'],
+                $filePath
+            ),
+            env('MAIL_TO_ADDRESS'),
+            $data
+        );
 
         // Last Step: Redirect
         return redirect('/contact');

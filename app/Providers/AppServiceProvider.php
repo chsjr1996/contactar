@@ -24,6 +24,11 @@ class AppServiceProvider extends ServiceProvider
             'App\Services\Interfaces\UploadServiceInterface',
             'App\Services\UploadFileService\UploadFileService',
         );
+
+        $this->app->bind(
+            'App\Services\Interfaces\SendMailServiceInterface',
+            'App\Services\SendMailService\SendMailService',
+        );
     }
 
     /**

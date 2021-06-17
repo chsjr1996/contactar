@@ -6,5 +6,5 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 interface UploadServiceInterface
 {
-    public static function run(UploadedFile $file, string $directory, string $name = null): string;
+    public function run(UploadedFile $file, string $directory, string $name = null): string;
 }
