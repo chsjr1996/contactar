@@ -1198,9 +1198,9 @@ var S = __importStar(__webpack_require__(/*! @Style/MainLayoutStyle */ "./resour
 
 var Header_1 = __importDefault(__webpack_require__(/*! @Component/Header */ "./resources/js/Components/Header.tsx"));
 
-function MainLayout(props) {
+var MainLayout = function MainLayout(props) {
   return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement(Header_1["default"], null), react_1["default"].createElement(S.ChildrenContainer, null, props.children));
-}
+};
 
 exports.default = MainLayout;
 

@@ -7,7 +7,7 @@ interface MainLayoutProps {
   children: React.ReactNode
 }
 
-export default function MainLayout(props: MainLayoutProps) {
+const MainLayout: React.FC<MainLayoutProps> = (props) => {
   return (
     <>
       <Header />
@@ -15,3 +15,5 @@ export default function MainLayout(props: MainLayoutProps) {
     </>
   );
 }
+
+export default MainLayout;
