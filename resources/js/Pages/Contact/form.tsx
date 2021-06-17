@@ -27,9 +27,12 @@ const Form: React.FC = (): JSX.Element => {
   const { errors, title, message, clearTime } = usePage<Page>().props
 
   useEffect(() => {
+    if (clearTime || Object.keys(errors).length) {
+      setLoading(false);
+    }
+
     if (clearTime) {
       formRef.current?.reset();
-      setLoading(false);
     }
 
     if (title && message) {
@@ -40,7 +43,7 @@ const Form: React.FC = (): JSX.Element => {
         container: 'bottom-right'
       })
     }
-  }, [clearTime, message]);
+  }, [clearTime, message, errors]);
 
   const handleSubmit: SubmitHandler<FormData> = async (data): Promise<void> => {
     if (loading) {

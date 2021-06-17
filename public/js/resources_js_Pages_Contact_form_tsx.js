@@ -1447,9 +1447,12 @@ var Form = function Form() {
   react_1.useEffect(function () {
     var _a;
 
+    if (clearTime || Object.keys(errors).length) {
+      setLoading(false);
+    }
+
     if (clearTime) {
       (_a = formRef.current) === null || _a === void 0 ? void 0 : _a.reset();
-      setLoading(false);
     }
 
     if (title && message) {
@@ -1460,7 +1463,7 @@ var Form = function Form() {
         container: 'bottom-right'
       });
     }
-  }, [clearTime, message]);
+  }, [clearTime, message, errors]);
 
   var handleSubmit = function handleSubmit(data) {
     return __awaiter(void 0, void 0, void 0, function () {
