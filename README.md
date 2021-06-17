@@ -1,6 +1,14 @@
-# Contactar
-
 [![License MIT](https://img.shields.io/github/license/chsjr1996/contactar)](https://github.com/chsjr1996/contactar/blob/main/LICENSE) [![https://github.com/chsjr1996/contactar/actions/workflows/laravel.yml/badge.svg](https://github.com/chsjr1996/contactar/actions/workflows/laravel.yml/badge.svg)](https://github.com/chsjr1996/contactar/actions)
+
+---
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/chsjr1996/contactar/main/public/img/contactar-small.png" />
+</p>
+
+<br>
+
+# Contactar
 
 Essa aplicação contem um exemplo de formulário de contato e foi construída utilizando as seguintes tecnologias:
 
