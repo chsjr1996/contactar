@@ -14,12 +14,7 @@ class ContactFormMailableTest extends TestCase
     {
         parent::setUp();
 
-        $this->contact = $this->createMock(Contact::class);
-
-        $this->contact->name = 'Carlos H';
-        $this->contact->email = 'carlos@contactar.com';
-        $this->contact->phone = '(11) 1111-1111';
-        $this->contact->message = 'you shall pass!';
+        $this->contact = Contact::factory()->make();
     }
 
     /**
@@ -28,8 +23,6 @@ class ContactFormMailableTest extends TestCase
      */
     public function test_template_render_should_be_correct()
     {
-        $this->contact->file_name = 'file_size_500kb.txt';
-
         $data = [
             'name' => $this->contact->name,
             'email' => $this->contact->email,
