@@ -8,8 +8,13 @@ use Mail;
 
 class SendMailService implements SendMailServiceInterface
 {
-    public function run(Mailable $mailable, string $mail_to): void
+    public function run(Mailable $mailable, string $mail_to): bool
     {
-        Mail::to($mail_to)->send($mailable);
+        try {
+            Mail::to($mail_to)->send($mailable);
+            return true;
+        } catch (\Exception $ex) {
+            return false;
+        }
     }
 }

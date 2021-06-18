@@ -11,8 +11,8 @@ class UploadFileServiceTest extends TestCase
     public function test_should_store_file_correctly()
     {
         $UploadedFile = new UploadedFile(
-            storage_path('app/test_files/file_size_500kb.txt'),
-            'file_size_500kb.txt'
+            storage_path('app/test_files/rand_file.txt'),
+            'rand_file.txt'
         );
 
         $UploadFileService = new UploadFileService();
