@@ -27,7 +27,7 @@ class SendRequest extends FormRequest
             'name' => 'string|required',
             'email' => 'email|required',
             'phone' => 'string|required|regex:/^(\(?\d{2}\)?\s)?(\d{4,5}\-?\d{4})$/i',
-            'ip' => 'string|required',
+            'ip' => 'string|required|ipv4',
             'message' => 'string|required',
             'attachment' => 'file|required|mimes:pdf,doc,docx,odt,txt|max:62.5',
         ];
