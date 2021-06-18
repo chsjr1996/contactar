@@ -29,7 +29,7 @@ Os seguintes passos são necessários:
 -   Copiar o arquivo `.env.sail.example` e mudar o nome para `.env` **(Ambiente de desenvolvimento)**
 -   Copiar o arquivo `.env.example` e mudar o nome para `.env` **(Ambiente de produção)**
 -   Executar o comando `./vendor/bin/sail up`¹
--   Executar o comando `./vendor/bin/sail artisan migrate`¹
+-   Executar o comando `./vendor/bin/sail artisan migrate`
 
 Pronto, sua aplicação já esta executando.
 
@@ -60,7 +60,7 @@ Você pode mudar o arquivo `.env` copiado de `.env.sail.example`, mas isso não 
 | MAIL_TO_ADDRESS   | endereço de e-mail desejado (destinatário)    |
 | MAIL_TO_NAME      | Nome desejado (destinatário)                  |
 
-> ¹ Caso tenha o [alias configurado](https://laravel.com/docs/8.x/sail#configuring-a-bash-alias) basta usar `sail up`.
+> ¹ Caso tenha o [alias configurado](https://laravel.com/docs/8.x/sail#configuring-a-bash-alias) basta usar `sail up`. Além disso, a primeira execução pode demorar para concluir pois existem algumas dependências nas imagens usadas que precisam ser compiladas.
 
 > ² Os valores aplicados aqui serão refletidos automaticamente no arquivo `docker-composer`.
 
@@ -90,19 +90,6 @@ Uma vez que a aplicação esteja executando, basta entrar com os seguintes coman
 
 -   `./vendor/bin/sail artisan test` (testes unitários e de integração)
 -   `./vendor/bin/sail dusk` (testes de navegador)
-
----
-
-## ToDo
-
--   [ ] Completar testes de integração;
--   [ ] Melhorar testes unitários;
--   [ ] Melhorar testes de navegador;
--   [ ] Tentar habilitar a verificação de cobertura de testes;
--   [ ] Adicionar/adaptar testes de navegador ao workflow;
--   [ ] Melhorar layout mobile;
--   [ ] Melhorar layout do e-mail disparado;
--   [ ] Limitar input file com atributo 'accept';
 
 ---
 
