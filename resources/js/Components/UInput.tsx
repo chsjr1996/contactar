@@ -8,6 +8,7 @@ interface UInputProps {
   type?: 'text' | 'email' | 'file';
   placeholder?: string;
   required?: boolean;
+  accept?: string;
   errors?: InertiaPropErrors;
 }
 
@@ -18,6 +19,7 @@ const UInput: React.FC<UInputProps> = (props): JSX.Element => {
     type,
     placeholder,
     required,
+    accept,
     errors
   } = props;
 
@@ -56,6 +58,7 @@ const UInput: React.FC<UInputProps> = (props): JSX.Element => {
         className={inputClasses()}
         ref={inputRef}
         defaultValue={defaultValue}
+        { ...(accept && { accept }) }
         { ...(required && { required }) }
         { ...(placeholder && { placeholder }) }
       />

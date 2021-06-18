@@ -10,6 +10,7 @@
     "baseUrl": "./resources/js",
     "paths": {
       "@Root/*": ["*"],
+      "@Config/*": ["Configs/*"],
       "@Interface/*": ["Interfaces/*"],
       "@Layout/*": ["Layouts/*"],
       "@Page/*": ["Pages/*"],

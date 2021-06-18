@@ -26,6 +26,8 @@ const Form: React.FC = (): JSX.Element => {
   const [loading, setLoading] = useState(false);
   const { errors, title, message, clearTime } = usePage<Page>().props
 
+  const acceptedFiles = 'application/msword, text/plain, application/pdf, application/vnd.oasis.opendocument.text';
+
   useEffect(() => {
     if (clearTime || Object.keys(errors).length) {
       setLoading(false);
@@ -69,11 +71,46 @@ const Form: React.FC = (): JSX.Element => {
           <S.Title>Contact form</S.Title>
 
           <UForm ref={formRef} onSubmit={handleSubmit}>
-            <UInput name="name" label="Name" placeholder="Please insert your name" errors={errors} required/>
-            <UInput name="email" label="E-mail" placeholder="Please insert your e-mail" errors={errors} required/>
-            <UInput name="phone" label="Phone" placeholder="Please insert your phone" errors={errors} required/>
-            <UTextArea name="message" label="Message" placeholder="Please enter with your message here" errors={errors} required/>
-            <UInput type='file' name="attachment" label="Attachment (pdf, doc, docx, odt or txt)" errors={errors} required/>
+            <UInput
+              name="name"
+              label="Name"
+              placeholder="Please insert your name"
+              errors={errors}
+              required
+            />
+
+            <UInput
+              name="email"
+              label="E-mail"
+              placeholder="Please insert your e-mail"
+              errors={errors}
+              required
+            />
+
+            <UInput
+              name="phone"
+              label="Phone"
+              placeholder="Please insert your phone"
+              errors={errors}
+              required
+            />
+
+            <UTextArea
+              name="message"
+              label="Message"
+              placeholder="Please enter with your message here"
+              errors={errors}
+              required
+            />
+
+            <UInput
+              type='file'
+              name="attachment"
+              label="Attachment (pdf, doc, docx, odt or txt)"
+              accept={acceptedFiles}
+              errors={errors}
+              required
+            />
 
             <S.Submit>{ loading ? '...' : 'Send' }</S.Submit>
           </UForm>

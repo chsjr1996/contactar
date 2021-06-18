@@ -960,6 +960,7 @@ var UInput = function UInput(props) {
       type = props.type,
       placeholder = props.placeholder,
       required = props.required,
+      accept = props.accept,
       errors = props.errors;
   var inputRef = react_1.useRef(null);
 
@@ -1002,6 +1003,8 @@ var UInput = function UInput(props) {
     className: inputClasses(),
     ref: inputRef,
     defaultValue: defaultValue
+  }, accept && {
+    accept: accept
   }, required && {
     required: required
   }, placeholder && {
@@ -1142,6 +1145,41 @@ var UTextArea = function UTextArea(props) {
 };
 
 exports.default = UTextArea;
+
+/***/ }),
+
+/***/ "./resources/js/Configs/device.ts":
+/*!****************************************!*\
+  !*** ./resources/js/Configs/device.ts ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.size = void 0;
+exports.size = {
+  mobileS: "320px",
+  mobileM: "375px",
+  mobileL: "425px",
+  tablet: "768px",
+  laptop: "1024px",
+  laptopL: "1440px",
+  desktop: "2560px"
+};
+exports.default = {
+  mobileS: "(max-width: " + exports.size.mobileS + ")",
+  mobileM: "(max-width: " + exports.size.mobileM + ")",
+  mobileL: "(max-width: " + exports.size.mobileL + ")",
+  tablet: "(max-width: " + exports.size.tablet + ")",
+  laptop: "(max-width: " + exports.size.laptop + ")",
+  laptopL: "(max-width: " + exports.size.laptopL + ")",
+  desktop: "(max-width: " + exports.size.desktop + ")",
+  desktopL: "(max-width: " + exports.size.desktop + ")"
+};
 
 /***/ }),
 
@@ -1444,6 +1482,7 @@ var Form = function Form() {
       title = _b.title,
       message = _b.message,
       clearTime = _b.clearTime;
+  var acceptedFiles = 'application/msword, text/plain, application/pdf, application/vnd.oasis.opendocument.text';
   react_1.useEffect(function () {
     var _a;
 
@@ -1532,6 +1571,7 @@ var Form = function Form() {
     type: 'file',
     name: "attachment",
     label: "Attachment (pdf, doc, docx, odt or txt)",
+    accept: acceptedFiles,
     errors: errors,
     required: true
   }), react_1["default"].createElement(S.Submit, null, loading ? '...' : 'Send')))));
@@ -1777,8 +1817,10 @@ exports.Submit = exports.Title = exports.SubContainer = exports.Container = void
 
 var styled_components_1 = __importDefault(__webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js"));
 
-exports.Container = styled_components_1["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: calc(100vh - 30px);\n"], ["\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: calc(100vh - 30px);\n"])));
-exports.SubContainer = styled_components_1["default"].div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  width: 500px;\n  height: 570px;\n  margin: 0 auto;\n  padding: 15px;\n  overflow-y: scroll;\n  border: 1px solid lightgray;\n  box-shadow: 1px 1px 5px 1px #ccc;\n  background-color: white;\n"], ["\n  width: 500px;\n  height: 570px;\n  margin: 0 auto;\n  padding: 15px;\n  overflow-y: scroll;\n  border: 1px solid lightgray;\n  box-shadow: 1px 1px 5px 1px #ccc;\n  background-color: white;\n"])));
+var device_1 = __importDefault(__webpack_require__(/*! @Config/device */ "./resources/js/Configs/device.ts"));
+
+exports.Container = styled_components_1["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  min-height: calc(100vh - 30px);\n\n  @media ", " {\n    min-height: auto;\n    height: 100%;\n  }\n"], ["\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  min-height: calc(100vh - 30px);\n\n  @media ", " {\n    min-height: auto;\n    height: 100%;\n  }\n"])), device_1["default"].mobileL);
+exports.SubContainer = styled_components_1["default"].div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  width: 500px;\n  height: auto;\n  margin-top: 30px;\n  padding: 15px;\n  border: 1px solid lightgray;\n  box-shadow: 1px 1px 5px 1px #ccc;\n  background-color: white;\n\n  @media ", " {\n    margin-top: 0;\n    border: 0;\n    box-shadow: unset;\n  }\n"], ["\n  width: 500px;\n  height: auto;\n  margin-top: 30px;\n  padding: 15px;\n  border: 1px solid lightgray;\n  box-shadow: 1px 1px 5px 1px #ccc;\n  background-color: white;\n\n  @media ", " {\n    margin-top: 0;\n    border: 0;\n    box-shadow: unset;\n  }\n"])), device_1["default"].mobileL);
 exports.Title = styled_components_1["default"].h1(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  font-size: 22px;\n"], ["\n  font-size: 22px;\n"])));
 exports.Submit = styled_components_1["default"].button.attrs(function () {
   return {
@@ -1824,7 +1866,9 @@ exports.AppTitle = exports.AppIcon = exports.Header = void 0;
 
 var styled_components_1 = __importDefault(__webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js"));
 
-exports.Header = styled_components_1["default"].header(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 50px;\n  background-color: #333;\n  box-shadow: 0px 2px 3px 1px #333;\n"], ["\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 50px;\n  background-color: #333;\n  box-shadow: 0px 2px 3px 1px #333;\n"])));
+var device_1 = __importDefault(__webpack_require__(/*! @Config/device */ "./resources/js/Configs/device.ts"));
+
+exports.Header = styled_components_1["default"].header(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 50px;\n  background-color: #333;\n  box-shadow: 0px 2px 3px 1px #333;\n\n  @media ", " {\n    position: unset;\n  }\n"], ["\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 50px;\n  background-color: #333;\n  box-shadow: 0px 2px 3px 1px #333;\n\n  @media ", " {\n    position: unset;\n  }\n"])), device_1["default"].mobileL);
 exports.AppIcon = styled_components_1["default"].img.attrs(function () {
   return {
     src: "/img/contactar-small.png",
@@ -1870,7 +1914,9 @@ exports.ChildrenContainer = void 0;
 
 var styled_components_1 = __importDefault(__webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js"));
 
-exports.ChildrenContainer = styled_components_1["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  margin-top: 30px;\n"], ["\n  margin-top: 30px;\n"])));
+var device_1 = __importDefault(__webpack_require__(/*! @Config/device */ "./resources/js/Configs/device.ts"));
+
+exports.ChildrenContainer = styled_components_1["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  margin-top: 30px;\n\n  @media ", " {\n    margin-top: 0;\n  }\n"], ["\n  margin-top: 30px;\n\n  @media ", " {\n    margin-top: 0;\n  }\n"])), device_1["default"].mobileL);
 var templateObject_1;
 
 /***/ }),

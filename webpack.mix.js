@@ -23,6 +23,7 @@ mix.webpackConfig({
     extensions: [".js", ".jsx", "ts", ".tsx"],
     alias: {
       "@Root": path.resolve(__dirname, "resources/js"),
+      "@Config": path.resolve(__dirname, "resources/js/Configs"),
       "@Interface": path.resolve(__dirname, "resources/js/Interfaces"),
       "@Layout": path.resolve(__dirname, "resources/js/Layouts"),
       "@Page": path.resolve(__dirname, "resources/js/Pages"),

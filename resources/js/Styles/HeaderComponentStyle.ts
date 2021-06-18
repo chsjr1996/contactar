@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import device from "@Config/device";
+
 export const Header = styled.header`
   display: flex;
   justify-content: center;
@@ -11,6 +13,10 @@ export const Header = styled.header`
   height: 50px;
   background-color: #333;
   box-shadow: 0px 2px 3px 1px #333;
+
+  @media ${device.mobileL} {
+    position: unset;
+  }
 `;
 
 export const AppIcon = styled.img.attrs(() => ({
