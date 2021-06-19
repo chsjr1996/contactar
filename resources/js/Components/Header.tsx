@@ -6,10 +6,10 @@ import * as S from "@Style/HeaderComponentStyle";
 export default function Header() {
   return (
     <S.Header>
-      <InertiaLink href='/'>
+      <InertiaLink id="header-app-icon" href='/'>
         <S.AppIcon />
       </InertiaLink>
-      <InertiaLink href='/'>
+      <InertiaLink id="header-app-name" href='/'>
         <S.AppTitle>Contactar</S.AppTitle>
       </InertiaLink>
     </S.Header>

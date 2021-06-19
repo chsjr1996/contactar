@@ -811,8 +811,10 @@ var S = __importStar(__webpack_require__(/*! @Style/HeaderComponentStyle */ "./r
 
 function Header() {
   return react_1["default"].createElement(S.Header, null, react_1["default"].createElement(inertia_react_1.InertiaLink, {
+    id: "header-app-icon",
     href: '/'
   }, react_1["default"].createElement(S.AppIcon, null)), react_1["default"].createElement(inertia_react_1.InertiaLink, {
+    id: "header-app-name",
     href: '/'
   }, react_1["default"].createElement(S.AppTitle, null, "Contactar")));
 }

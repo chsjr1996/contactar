@@ -14,4 +14,15 @@ class ContactPageTest extends DuskTestCase
                 ->assertSee('Contact form');
         });
     }
+
+    public function testContactPageHeaderNavigateToHome()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/contact')
+                ->assertSee('Contactar')
+                ->click('#header-app-name')
+                ->pause(1000)
+                ->assertSee('About "Contactar"');
+        });
+    }
 }
