@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SendRequest;
-use App\Mail\ContactFormMailable;
 use App\Repositories\Contracts\ContactRepositoryInterface;
 use App\Services\Interfaces\SendMailServiceInterface;
 use App\Services\Interfaces\UploadServiceInterface;
@@ -38,18 +37,8 @@ class ContactController extends Controller
         // 3º Step: Store data
         $repository->insert($data);
 
-        // 4º Send mail
-        $mailService->run(
-            new ContactFormMailable(
-                $data['name'],
-                $data['email'],
-                $data['phone'],
-                $data['message'],
-                $filePath
-            ),
-            env('MAIL_TO_ADDRESS'),
-            $data
-        );
+        // 4º Send mail (queue)
+        $mailService->run($data, env('MAIL_TO_ADDRESS'));
 
         // Render component with success message
         return Inertia::render('Contact/form', [

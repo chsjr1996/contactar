@@ -13,7 +13,7 @@
 Essa aplicação contem um exemplo de formulário de contato e foi construída utilizando as seguintes tecnologias:
 
 -   Laravel 8
--   Docker (Laravel Sail: Aplicação, SGBD, Mailhog, Selenium e Redis)
+-   Docker (Laravel Sail: Aplicação, SGBD, Mailhog e Selenium)
 -   React Inertia.js (com Typescript, Styled components e Bootsrap)
 
 O repositório também conta com Github Actions para realizar os testes automatizados a cada _commit_.
@@ -24,9 +24,9 @@ O repositório também conta com Github Actions para realizar os testes automati
 
 ### Requisitos
 
-- Composer
-- Docker (Laravel Sail)
-- Node.JS (opcional, build do frontend)¹
+-   Composer
+-   Docker (Laravel Sail)
+-   Node.JS (opcional, build do frontend)¹
 
 ### Passos necessários:
 
@@ -38,6 +38,7 @@ O repositório também conta com Github Actions para realizar os testes automati
 -   Executar o comando `npm install`
 -   Executar o comando `npm run watch` **(Ambiente de desenvolvimento)**
 -   Executar o comando `npm run production` **(Ambiente de produção)**
+-   Executar o comando `sail artisan queue:work` para processar a fila de envio de e-mails
 
 Pronto, sua aplicação já esta executando.
 
@@ -57,9 +58,6 @@ Você pode mudar o arquivo `.env` copiado de `.env.sail.example`, mas isso não 
 | DB_DATABASE       | defina o nome desejado para base dados³       |
 | DB_USERNAME       | defina o usuário desejado para base de dados³ |
 | DB_PASSWORD       | defina a senha desejada para base dados³      |
-| REDIS_HOST        | redis                                         |
-| REDIS_PASSWORD    | null                                          |
-| REDIS_PORT        | 6379                                          |
 | MAIL_MAILER       | smtp                                          |
 | MAIL_HOST         | mailhog                                       |
 | MAIL_PORT         | 1025                                          |
@@ -80,7 +78,6 @@ Você pode mudar o arquivo `.env` copiado de `.env.sail.example`, mas isso não 
 | ----- | ------------------- |
 | 80    | aplicação (http)    |
 | 3306  | MySQL               |
-| 6379  | Redis               |
 | 1025  | Mailhog (Server)    |
 | 8025  | Mailhog (Dashboard) |
 

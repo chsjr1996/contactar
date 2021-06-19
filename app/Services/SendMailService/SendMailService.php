@@ -2,16 +2,16 @@
 
 namespace App\Services\SendMailService;
 
+use App\Jobs\SendFormEmailJob;
 use App\Services\Interfaces\SendMailServiceInterface;
-use Illuminate\Mail\Mailable;
-use Mail;
 
 class SendMailService implements SendMailServiceInterface
 {
-    public function run(Mailable $mailable, string $mail_to): bool
+    public function run(array $data, string $mailTo): bool
     {
         try {
-            Mail::to($mail_to)->send($mailable);
+            dispatch(new SendFormEmailJob($data, env('MAIL_TO_ADDRESS')));
+
             return true;
         } catch (\Exception $ex) {
             return false;
