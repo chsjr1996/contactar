@@ -24,11 +24,13 @@ O repositório também conta com Github Actions para realizar os testes automati
 
 ### Requisitos
 
+- Composer
 - Docker (Laravel Sail)
 - Node.JS (opcional, build do frontend)¹
 
 ### Passos necessários:
 
+-   Executar o comando `composer install`
 -   Copiar o arquivo `.env.sail.example` e mudar o nome para `.env` **(Ambiente de desenvolvimento)**
 -   Copiar o arquivo `.env.example` e mudar o nome para `.env` **(Ambiente de produção)**
 -   Executar o comando `./vendor/bin/sail up`²
