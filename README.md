@@ -22,14 +22,19 @@ O repositório também conta com Github Actions para realizar os testes automati
 
 ## Instalação com Laravel Sail
 
-**A instalação com Laravel Sail requer o docker instalado.**
+### Requisitos
 
-Os seguintes passos são necessários:
+- Docker (Laravel Sail)
+- Node.JS (opcional, build do frontend)¹
+
+### Passos necessários:
 
 -   Copiar o arquivo `.env.sail.example` e mudar o nome para `.env` **(Ambiente de desenvolvimento)**
 -   Copiar o arquivo `.env.example` e mudar o nome para `.env` **(Ambiente de produção)**
--   Executar o comando `./vendor/bin/sail up`¹
+-   Executar o comando `./vendor/bin/sail up`²
 -   Executar o comando `./vendor/bin/sail artisan migrate`
+-   Executar o comando `npm run watch` **(Ambiente de desenvolvimento)**
+-   Executar o comando `npm run production` **(Ambiente de produção)**
 
 Pronto, sua aplicação já esta executando.
 
@@ -46,9 +51,9 @@ Você pode mudar o arquivo `.env` copiado de `.env.sail.example`, mas isso não 
 | DB_CONNECTION     | mysql                                         |
 | DB_HOST           | mysql                                         |
 | DB_PORT           | 3306                                          |
-| DB_DATABASE       | defina o nome desejado para base dados²       |
-| DB_USERNAME       | defina o usuário desejado para base de dados² |
-| DB_PASSWORD       | defina a senha desejada para base dados²      |
+| DB_DATABASE       | defina o nome desejado para base dados³       |
+| DB_USERNAME       | defina o usuário desejado para base de dados³ |
+| DB_PASSWORD       | defina a senha desejada para base dados³      |
 | REDIS_HOST        | redis                                         |
 | REDIS_PASSWORD    | null                                          |
 | REDIS_PORT        | 6379                                          |
@@ -60,9 +65,11 @@ Você pode mudar o arquivo `.env` copiado de `.env.sail.example`, mas isso não 
 | MAIL_TO_ADDRESS   | endereço de e-mail desejado (destinatário)    |
 | MAIL_TO_NAME      | Nome desejado (destinatário)                  |
 
-> ¹ Caso tenha o [alias configurado](https://laravel.com/docs/8.x/sail#configuring-a-bash-alias) basta usar `sail up`. Além disso, a primeira execução pode demorar para concluir pois existem algumas dependências nas imagens usadas que precisam ser compiladas.
+> ¹ Caso não possua o Node.JS em sua máquina você pode utilizar o comando `sail bash` para entrar no "shell" do container de aplicação, e uma vez lá dentro executar os comandos de build do frontend.
 
-> ² Os valores aplicados aqui serão refletidos automaticamente no arquivo `docker-composer`.
+> ² Caso tenha o [alias configurado](https://laravel.com/docs/8.x/sail#configuring-a-bash-alias) basta usar `sail up`. Além disso, a primeira execução pode demorar para concluir pois existem algumas dependências nas imagens usadas que precisam ser compiladas.
+
+> ³ Os valores aplicados aqui serão refletidos automaticamente no arquivo `docker-composer`.
 
 ### Portas da aplicação
 
