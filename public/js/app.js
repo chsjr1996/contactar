@@ -37782,6 +37782,14 @@ var map = {
 	"./Contact/form.tsx": [
 		"./resources/js/Pages/Contact/form.tsx",
 		"resources_js_Pages_Contact_form_tsx"
+	],
+	"./Home/about": [
+		"./resources/js/Pages/Home/about.tsx",
+		"resources_js_Pages_Home_about_tsx"
+	],
+	"./Home/about.tsx": [
+		"./resources/js/Pages/Home/about.tsx",
+		"resources_js_Pages_Home_about_tsx"
 	]
 };
 function webpackAsyncContext(req) {
@@ -37950,7 +37958,7 @@ module.exports = webpackAsyncContext;
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if (chunkId === "resources_js_Pages_Contact_form_tsx") return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_Pages_Contact_form_tsx":1,"resources_js_Pages_Home_about_tsx":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

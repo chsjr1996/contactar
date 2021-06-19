@@ -7,7 +7,7 @@ import { store } from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 
 import MainLayout from "@Layout/Main";
-import * as S from "@Style/ContactPageStyle";
+import * as S from "@Root/Styles/ContactPageFormStyle";
 import UInput from "@Component/UInput";
 import UTextArea from "@Component/UTextArea";
 import GetIP from "@Service/GetIP";

@@ -13,16 +13,6 @@ use Inertia\Response;
 class ContactController extends Controller
 {
     /**
-     * Display contact form.
-     *
-     * @return Response
-     */
-    public function form(): Response
-    {
-        return Inertia::render('Contact/form');
-    }
-
-    /**
      * Receive form data and persist it
      *
      * @param SendRequest $request

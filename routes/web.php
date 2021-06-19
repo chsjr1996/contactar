@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,9 @@ use App\Http\Controllers\ContactController;
 |
 */
 
+Route::inertia('/', 'Home/about');
+
 Route::prefix('/contact')->group(function () {
-    Route::get('/', [ContactController::class, 'form'])->name('contact.form');
+    Route::inertia('/', 'Contact/form');
     Route::post('/', [ContactController::class, 'send'])->name('contact.send');
 });
