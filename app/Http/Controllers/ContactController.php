@@ -54,7 +54,7 @@ class ContactController extends Controller
         // Render component with success message
         return Inertia::render('Contact/form', [
             'title' => 'Success!',
-            'message' => 'Your message has sended.',
+            'message' => 'Your message was sent.',
             'clearTime' => \Carbon\Carbon::now()
         ]);
     }
