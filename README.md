@@ -35,6 +35,7 @@ O repositório também conta com Github Actions para realizar os testes automati
 -   Copiar o arquivo `.env.example` e mudar o nome para `.env` **(Ambiente de produção)**
 -   Executar o comando `./vendor/bin/sail up`²
 -   Executar o comando `./vendor/bin/sail artisan migrate`
+-   Executar o comando `npm install`
 -   Executar o comando `npm run watch` **(Ambiente de desenvolvimento)**
 -   Executar o comando `npm run production` **(Ambiente de produção)**
 
