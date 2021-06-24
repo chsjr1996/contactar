@@ -24,19 +24,11 @@ interface FormData {
 const Form: React.FC = (): JSX.Element => {
   const formRef = useRef<FormHandles>(null);
   const [loading, setLoading] = useState(false);
-  const { errors, title, message, clearTime } = usePage<Page>().props
+  const { errors, title, message } = usePage<Page>().props
 
   const acceptedFiles = 'application/msword, text/plain, application/pdf, application/vnd.oasis.opendocument.text';
 
   useEffect(() => {
-    if (clearTime || Object.keys(errors).length) {
-      setLoading(false);
-    }
-
-    if (clearTime) {
-      formRef.current?.reset();
-    }
-
     if (title && message) {
       store.addNotification({
         title: title as string,
@@ -45,7 +37,7 @@ const Form: React.FC = (): JSX.Element => {
         container: 'bottom-right'
       })
     }
-  }, [clearTime, message, errors]);
+  }, [message, errors]);
 
   const handleSubmit: SubmitHandler<FormData> = async (data): Promise<void> => {
     if (loading) {
@@ -61,7 +53,13 @@ const Form: React.FC = (): JSX.Element => {
 
     formData.append('ip', await GetIP());
 
-    Inertia.post('/contact', formData);
+    Inertia.post('/contact', formData, {
+      onSuccess: () => {
+        setLoading(false)
+        formRef.current?.reset();
+      },
+      onFinish: (visit: any) => { setLoading(false) }
+    });
   }
 
   return (

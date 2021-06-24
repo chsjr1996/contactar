@@ -1488,20 +1488,9 @@ var Form = function Form() {
   var _b = inertia_react_1.usePage().props,
       errors = _b.errors,
       title = _b.title,
-      message = _b.message,
-      clearTime = _b.clearTime;
+      message = _b.message;
   var acceptedFiles = 'application/msword, text/plain, application/pdf, application/vnd.oasis.opendocument.text';
   react_1.useEffect(function () {
-    var _a;
-
-    if (clearTime || Object.keys(errors).length) {
-      setLoading(false);
-    }
-
-    if (clearTime) {
-      (_a = formRef.current) === null || _a === void 0 ? void 0 : _a.reset();
-    }
-
     if (title && message) {
       react_notifications_component_1.store.addNotification({
         title: title,
@@ -1510,7 +1499,7 @@ var Form = function Form() {
         container: 'bottom-right'
       });
     }
-  }, [clearTime, message, errors]);
+  }, [message, errors]);
 
   var handleSubmit = function handleSubmit(data) {
     return __awaiter(void 0, void 0, void 0, function () {
@@ -1539,7 +1528,17 @@ var Form = function Form() {
           case 1:
             _b.apply(_a, _c.concat([_d.sent()]));
 
-            inertia_1.Inertia.post('/contact', formData);
+            inertia_1.Inertia.post('/contact', formData, {
+              onSuccess: function onSuccess() {
+                var _a;
+
+                setLoading(false);
+                (_a = formRef.current) === null || _a === void 0 ? void 0 : _a.reset();
+              },
+              onFinish: function onFinish(visit) {
+                setLoading(false);
+              }
+            });
             return [2
             /*return*/
             ];
