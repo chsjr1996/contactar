@@ -110,8 +110,8 @@ Uma vez que a aplicação esteja executando, basta entrar com os seguintes coman
 - [x] Migrar Inertia v1.0
 - [ ] Implementar MUI/react
 - [ ] Remover Styled Components
-- [ ] Adicionar .eslintrc
-- [ ] Adicionar .prettierc
+- [x] Adicionar .eslintrc
+- [x] Adicionar .prettierc
 - [ ] Implementar página de admin (visualizar contatos recebidos)
 - [ ] Implementar testes automatizados no Inertia.JS
 - [ ] Melhorias de código no Backend e Frontend (refatorção)

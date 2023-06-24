@@ -8,6 +8,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
+    "allowJs": true,
     "baseUrl": "./resources/js",
     "paths": {
       "@Root/*": ["*"],
@@ -22,7 +23,8 @@
   },
   "include": [
     "resources/assets",
-    "resources/js"
+    "resources/js",
+    ".eslintrc.cjs"
   ],
   "exclude": [
     "node_modules"
