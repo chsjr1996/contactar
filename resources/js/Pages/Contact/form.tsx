@@ -1,12 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Form as UForm } from "@unform/web";
+import React, { useEffect, useRef, useState } from 'react';
+import { Form as UForm } from '@unform/web';
 import { FormHandles, SubmitHandler } from '@unform/core';
-import { router, usePage } from "@inertiajs/react";
-import MainLayout from "@Layout/Main";
-import * as S from "@Root/Styles/ContactPageFormStyle";
-import UInput from "@Component/UInput";
-import UTextArea from "@Component/UTextArea";
-import GetIP from "@Service/GetIP";
+import { router, usePage } from '@inertiajs/react';
+import LeadLayout from '@Layout/Lead';
+import * as S from '@Root/Styles/ContactPageFormStyle';
+import UInput from '@Component/UInput';
+import UTextArea from '@Component/UTextArea';
+import GetIP from '@Service/GetIP';
 
 interface FormData {
   name: string;
@@ -20,9 +20,10 @@ interface FormData {
 const Form: React.FC = (): JSX.Element => {
   const formRef = useRef<FormHandles>(null);
   const [loading, setLoading] = useState(false);
-  const { errors, title, message } = usePage().props
+  const { errors, title, message } = usePage().props;
 
-  const acceptedFiles = 'application/msword, text/plain, application/pdf, application/vnd.oasis.opendocument.text';
+  const acceptedFiles =
+    'application/msword, text/plain, application/pdf, application/vnd.oasis.opendocument.text';
 
   useEffect(() => {
     if (title && message) {
@@ -46,15 +47,17 @@ const Form: React.FC = (): JSX.Element => {
 
     router.post('/contact', formData, {
       onSuccess: () => {
-        setLoading(false)
+        setLoading(false);
         formRef.current?.reset();
       },
-      onFinish: (visit: any) => { setLoading(false) }
+      onFinish: (visit: any) => {
+        setLoading(false);
+      },
     });
-  }
+  };
 
   return (
-    <MainLayout>
+    <LeadLayout>
       <S.Container>
         <S.SubContainer>
           <S.Title>Contact form</S.Title>
@@ -93,7 +96,7 @@ const Form: React.FC = (): JSX.Element => {
             />
 
             <UInput
-              type='file'
+              type="file"
               name="attachment"
               label="Attachment (pdf, doc, docx, odt or txt)"
               accept={acceptedFiles}
@@ -101,12 +104,12 @@ const Form: React.FC = (): JSX.Element => {
               required
             />
 
-            <S.Submit>{ loading ? '...' : 'Send' }</S.Submit>
+            <S.Submit>{loading ? '...' : 'Send'}</S.Submit>
           </UForm>
         </S.SubContainer>
       </S.Container>
-    </MainLayout>
+    </LeadLayout>
   );
-}
+};
 
 export default Form;
