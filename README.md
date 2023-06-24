@@ -12,9 +12,9 @@
 
 Essa aplicação contem um exemplo de formulário de contato e foi construída utilizando as seguintes tecnologias:
 
--   Laravel 8
+-   Laravel 10
 -   Docker (Laravel Sail: Aplicação, SGBD, Mailhog e Selenium)
--   React Inertia.js (com Typescript, Styled components e Bootsrap)
+-   React Inertia.js (com Typescript)
 
 O repositório também conta com Github Actions para realizar os testes automatizados a cada _commit_.
 
@@ -35,6 +35,7 @@ O repositório também conta com Github Actions para realizar os testes automati
 -   Copiar o arquivo `.env.example` e mudar o nome para `.env` **(Ambiente de produção)**
 -   Executar o comando `./vendor/bin/sail up`²
 -   Executar o comando `./vendor/bin/sail artisan migrate`
+-   Executar o comando `nvm use` **(para utilizar a versão do Node.JS especificada no .nvmrc)**
 -   Executar o comando `npm install`
 -   Executar o comando `npm run watch` **(Ambiente de desenvolvimento)**
 -   Executar o comando `npm run production` **(Ambiente de produção)**
@@ -101,3 +102,17 @@ Uma vez que a aplicação esteja executando, basta entrar com os seguintes coman
 ---
 
 ### Em desenvolvimento
+
+**TODO:**
+
+- [x] Migrar para Laravel 10
+- [x] Migrar para PHP 8.2
+- [x] Migrar Inertia v1.0
+- [ ] Implementar MUI/react
+- [ ] Remover Styled Components
+- [ ] Adicionar .eslintrc
+- [ ] Adicionar .prettierc
+- [ ] Implementar página de admin (visualizar contatos recebidos)
+- [ ] Implementar testes automatizados no Inertia.JS
+- [ ] Melhorias de código no Backend e Frontend (refatorção)
+- [ ] Implementar Inertia SSR
