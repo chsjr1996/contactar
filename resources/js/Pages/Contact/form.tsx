@@ -1,11 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Form as UForm } from "@unform/web";
 import { FormHandles, SubmitHandler } from '@unform/core';
-import { Inertia, Page } from "@inertiajs/inertia";
-import { usePage } from "@inertiajs/inertia-react";
-import { store } from "react-notifications-component";
-import "react-notifications-component/dist/theme.css";
-
+import { router, usePage } from "@inertiajs/react";
 import MainLayout from "@Layout/Main";
 import * as S from "@Root/Styles/ContactPageFormStyle";
 import UInput from "@Component/UInput";
@@ -24,18 +20,13 @@ interface FormData {
 const Form: React.FC = (): JSX.Element => {
   const formRef = useRef<FormHandles>(null);
   const [loading, setLoading] = useState(false);
-  const { errors, title, message } = usePage<Page>().props
+  const { errors, title, message } = usePage().props
 
   const acceptedFiles = 'application/msword, text/plain, application/pdf, application/vnd.oasis.opendocument.text';
 
   useEffect(() => {
     if (title && message) {
-      store.addNotification({
-        title: title as string,
-        message: message as string,
-        type: 'success',
-        container: 'bottom-right'
-      })
+      // TODO: add missing notification hook here!
     }
   }, [message, errors]);
 
@@ -53,7 +44,7 @@ const Form: React.FC = (): JSX.Element => {
 
     formData.append('ip', await GetIP());
 
-    Inertia.post('/contact', formData, {
+    router.post('/contact', formData, {
       onSuccess: () => {
         setLoading(false)
         formRef.current?.reset();

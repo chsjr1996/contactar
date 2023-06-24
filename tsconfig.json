@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "commonjs",
+    "module": "ES6",
+    "moduleResolution": "Node",
     "jsx": "react",
     "strict": true,
     "esModuleInterop": true,
@@ -18,5 +19,12 @@
       "@Style/*": ["Styles/*"],
       "@Service/*": ["Services/*"],
     }
-  }
+  },
+  "include": [
+    "resources/assets",
+    "resources/js"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

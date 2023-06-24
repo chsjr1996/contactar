@@ -1,17 +1,16 @@
 import React from "react";
-import { InertiaLink } from "@inertiajs/inertia-react";
-
+import { Link } from "@inertiajs/react";
 import * as S from "@Style/HeaderComponentStyle";
 
 export default function Header() {
   return (
     <S.Header>
-      <InertiaLink id="header-app-icon" href='/'>
+      <Link id="header-app-icon" href='/'>
         <S.AppIcon />
-      </InertiaLink>
-      <InertiaLink id="header-app-name" href='/'>
+      </Link>
+      <Link id="header-app-name" href='/'>
         <S.AppTitle>Contactar</S.AppTitle>
-      </InertiaLink>
+      </Link>
     </S.Header>
   );
 }
