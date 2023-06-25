@@ -19,7 +19,6 @@
       "@Page/*": ["Pages/*"],
       "@Component/*": ["Components/*"],
       "@Style/*": ["Styles/*"],
-      "@Service/*": ["Services/*"],
       "@Hook/*": ["Hooks/*"],
       "@Util/*": ["Utils/*"],
     }
