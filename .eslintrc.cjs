@@ -74,10 +74,6 @@ module.exports = {
                 map: [
                     ['@Root', path.resolve(__dirname, 'resources', 'js')],
                     [
-                        '@Config',
-                        path.resolve(__dirname, 'resources', 'js', 'Configs'),
-                    ],
-                    [
                         '@Interface',
                         path.resolve(
                             __dirname,
@@ -102,10 +98,6 @@ module.exports = {
                             'js',
                             'Components'
                         ),
-                    ],
-                    [
-                        '@Style',
-                        path.resolve(__dirname, 'resources', 'js', 'Styles'),
                     ],
                     [
                         '@Hook',

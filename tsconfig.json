@@ -13,12 +13,10 @@
     "baseUrl": "./resources/js",
     "paths": {
       "@Root/*": ["*"],
-      "@Config/*": ["Configs/*"],
       "@Interface/*": ["Interfaces/*"],
       "@Layout/*": ["Layouts/*"],
       "@Page/*": ["Pages/*"],
       "@Component/*": ["Components/*"],
-      "@Style/*": ["Styles/*"],
       "@Hook/*": ["Hooks/*"],
       "@Util/*": ["Utils/*"],
     }

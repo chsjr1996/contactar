@@ -108,12 +108,13 @@ Uma vez que a aplicação esteja executando, basta entrar com os seguintes coman
 - [x] Migrar para Laravel 10
 - [x] Migrar para PHP 8.2
 - [x] Migrar Inertia v1.0
-- [ ] Implementar MUI/react
-- [ ] Remover Styled Components
-- [ ] Adicionar "React i18n next"
-- [ ] Adicionar responsividade
+- [x] Implementar MUI/react
+- [x] Remover Styled Components
 - [x] Adicionar .eslintrc
 - [x] Adicionar .prettierc
+- [ ] Adicionar tema escuro
+- [ ] Adicionar "React i18n next"
+- [ ] Adicionar responsividade
 - [ ] Implementar página de admin (visualizar contatos recebidos)
 - [ ] Implementar testes automatizados no Inertia.JS
 - [ ] Melhorias de código no Backend e Frontend (refatorção)
