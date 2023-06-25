@@ -12,30 +12,32 @@ import UploadFileIcon from '@mui/icons-material/UploadFile';
 type MuiUploadProps = {
   label: string;
   fieldName: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  fileName?: string;
   buttonVariant?: 'outlined' | 'text' | 'contained';
   buttonSx?: SxProps<Theme>;
   typographyProps?: TypographyProps;
   fileNameTypographyProps?: TypographyProps;
+  inputRef?: React.MutableRefObject<HTMLInputElement | null>;
 };
 
 const MuiUpload: React.FC<MuiUploadProps> = ({
   label,
   fieldName,
+  onChange,
+  fileName = '',
   buttonVariant = 'text',
   buttonSx,
   typographyProps = {},
   fileNameTypographyProps = {},
+  inputRef,
 }): JSX.Element => {
-  const [fileName, setFileName] = useState<string>('');
-
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) {
       return;
     }
 
-    const file = e.target.files[0];
-    const { name } = file;
-    setFileName(name);
+    onChange(e);
   };
 
   return (
@@ -50,8 +52,9 @@ const MuiUpload: React.FC<MuiUploadProps> = ({
         <input
           type="file"
           name={fieldName}
-          hidden
           onChange={handleFileChange}
+          {...(inputRef && { ref: inputRef })}
+          hidden
         />
       </Button>
       {fileName && (
