@@ -47,6 +47,7 @@ module.exports = {
             'error',
             { argsIgnorePattern: '^_' },
         ],
+        '@typescript-eslint/no-explicit-any': 'off',
         'react-hooks/exhaustive-deps': 'warn',
         'linebreak-style': 'off',
         'prettier/prettier': [
@@ -109,6 +110,14 @@ module.exports = {
                     [
                         '@Service',
                         path.resolve(__dirname, 'resources', 'js', 'Services'),
+                    ],
+                    [
+                        '@Hook',
+                        path.resolve(__dirname, 'resources', 'js', 'Hooks'),
+                    ],
+                    [
+                        '@Util',
+                        path.resolve(__dirname, 'resources', 'js', 'Utils'),
                     ],
                 ],
                 extensions: ['.js', '.jsx', '.ts', '.tsx'],

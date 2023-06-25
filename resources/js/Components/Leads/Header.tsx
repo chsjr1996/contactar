@@ -5,7 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { MuiButton } from '@Component/_Global/MuiButton';
 
-export const leadHeaderHeight = '50px';
+export const leadHeaderHeight = '80px';
 
 const Header = () => {
   return (

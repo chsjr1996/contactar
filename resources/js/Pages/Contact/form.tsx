@@ -1,56 +1,47 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Form as UForm } from '@unform/web';
-import { FormHandles, SubmitHandler } from '@unform/core';
-import { router, usePage } from '@inertiajs/react';
+import React, { useRef, useState } from 'react';
+import { Box, Stack, TextField, Typography } from '@mui/material';
+import { router } from '@inertiajs/react';
 import LeadLayout from '@Layout/Lead';
-import * as S from '@Root/Styles/ContactPageFormStyle';
-import UInput from '@Component/UInput';
-import UTextArea from '@Component/UTextArea';
+import { leadHeaderHeight } from '@Component/Leads/Header';
+import { MuiButton } from '@Component/_Global/MuiButton';
+import { MuiUpload } from '@Component/Forms/MuiUpload';
+import { handleFormFields } from '@Util/FormHelpers';
 import GetIP from '@Service/GetIP';
 
-interface FormData {
-  name: string;
-  email: string;
-  phone: string;
-  message: string;
-  attachment: Blob;
-  [key: string]: string | Blob;
-}
-
 const Form: React.FC = (): JSX.Element => {
-  const formRef = useRef<FormHandles>(null);
+  const formRef = useRef(null);
   const [loading, setLoading] = useState(false);
-  const { errors, title, message } = usePage().props;
 
   const acceptedFiles =
     'application/msword, text/plain, application/pdf, application/vnd.oasis.opendocument.text';
 
-  useEffect(() => {
-    if (title && message) {
-      // TODO: add missing notification hook here!
-    }
-  }, [message, errors]);
+  const handleSubmit = async (
+    event: React.FormEvent<HTMLFormElement>
+  ): Promise<void> => {
+    event.preventDefault();
 
-  const handleSubmit: SubmitHandler<FormData> = async (data): Promise<void> => {
+    setLoading(true);
+
     if (loading) {
       return;
     }
 
-    setLoading(true);
     const formData = new FormData();
-
-    Object.keys(data).map((k: string) => {
-      formData.append(k, data[k]);
-    });
-
     formData.append('ip', await GetIP());
+
+    handleFormFields(formData, formRef, [
+      { formName: 'name', fieldRef: 'current.name.value' },
+      { formName: 'email', fieldRef: 'current.email.value' },
+      { formName: 'phone', fieldRef: 'current.phone.value' },
+      { formName: 'message', fieldRef: 'current.message.value' },
+      { formName: 'attachment', fieldRef: 'current.attachment.files.0' },
+    ]);
 
     router.post('/contact', formData, {
       onSuccess: () => {
-        setLoading(false);
-        formRef.current?.reset();
+        // TODO: try to reset form here!
       },
-      onFinish: (visit: any) => {
+      onFinish: (_visit) => {
         setLoading(false);
       },
     });
@@ -58,56 +49,51 @@ const Form: React.FC = (): JSX.Element => {
 
   return (
     <LeadLayout>
-      <S.Container>
-        <S.SubContainer>
-          <S.Title>Contact form</S.Title>
-
-          <UForm ref={formRef} onSubmit={handleSubmit}>
-            <UInput
-              name="name"
-              label="Name"
-              placeholder="Please insert your name"
-              errors={errors}
-              required
-            />
-
-            <UInput
-              name="email"
-              label="E-mail"
-              placeholder="Please insert your e-mail"
-              errors={errors}
-              required
-            />
-
-            <UInput
-              name="phone"
-              label="Phone"
-              placeholder="Please insert your phone"
-              errors={errors}
-              required
-            />
-
-            <UTextArea
-              name="message"
-              label="Message"
-              placeholder="Please enter with your message here"
-              errors={errors}
-              required
-            />
-
-            <UInput
-              type="file"
-              name="attachment"
-              label="Attachment (pdf, doc, docx, odt or txt)"
-              accept={acceptedFiles}
-              errors={errors}
-              required
-            />
-
-            <S.Submit>{loading ? '...' : 'Send'}</S.Submit>
-          </UForm>
-        </S.SubContainer>
-      </S.Container>
+      <Stack
+        sx={{
+          minHeight: `calc(100vh - ${leadHeaderHeight})`,
+          width: { xs: 'unset', sm: '600px' },
+          p: '15px',
+          m: '0 auto',
+        }}
+      >
+        <Box
+          component="form"
+          ref={formRef}
+          onSubmit={handleSubmit}
+          sx={{ '& > :not(style)': { mt: '20px' } }}
+        >
+          <Typography
+            component="h2"
+            sx={{
+              fontSize: '22px',
+              fontWeight: 600,
+              textAlign: 'center',
+              mb: '20px',
+            }}
+          >
+            Contact form
+          </Typography>
+          <TextField label="Name" name="name" fullWidth />
+          <TextField label="E-mail" name="email" fullWidth />
+          <TextField label="Phone" name="phone" fullWidth />
+          <TextField
+            label="Message"
+            name="message"
+            rows={4}
+            multiline
+            fullWidth
+          />
+          <MuiUpload
+            label="Attachment"
+            fieldName="attachment"
+            buttonVariant="outlined"
+          />
+          <MuiButton variant="contained" type="submit" fullWidth>
+            {loading ? '...' : 'Send'}
+          </MuiButton>
+        </Box>
+      </Stack>
     </LeadLayout>
   );
 };

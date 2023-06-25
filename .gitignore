@@ -14,3 +14,4 @@ yarn-error.log
 /.idea
 /.vscode
 /.ignored
+docker-compose-custom.yml

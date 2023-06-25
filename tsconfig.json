@@ -4,6 +4,7 @@
     "module": "ES6",
     "moduleResolution": "Node",
     "jsx": "react",
+    "noImplicitAny": false,
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -19,6 +20,8 @@
       "@Component/*": ["Components/*"],
       "@Style/*": ["Styles/*"],
       "@Service/*": ["Services/*"],
+      "@Hook/*": ["Hooks/*"],
+      "@Util/*": ["Utils/*"],
     }
   },
   "include": [

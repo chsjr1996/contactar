@@ -30,6 +30,8 @@ mix.webpackConfig({
       "@Component": path.resolve(__dirname, "resources/js/Components"),
       "@Style": path.resolve(__dirname, "resources/js/Styles"),
       "@Service": path.resolve(__dirname, "resources/js/Services"),
+      "@Hook": path.resolve(__dirname, "resources/js/Hooks"),
+      "@Util": path.resolve(__dirname, "resources/js/Utils"),
     },
   },
 });
