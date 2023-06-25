@@ -32,6 +32,7 @@ class ContactController extends Controller
         // 2º Step: Get all data
         $data = $request->toArray();
         $data['file_name'] = $filePath;
+        $data['ip'] = $request->ip();
         unset($data['attachment']);
 
         // 3º Step: Store data
