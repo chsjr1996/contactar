@@ -1,0 +1,27 @@
+{
+    "about-app": {
+        "title": "About \"Contactar\"",
+        "description": "This application contains a sample of Contact Form.",
+        "contact-page-btn": "Contact page",
+        "fork-btn": "Fork me on Github"
+    },
+    "settings-sidebar": {
+        "title": "Settings",
+        "theme-switcher": {
+            "title": "Theme mode",
+            "light-theme": "Light",
+            "system-theme": "System",
+            "dark-theme": "Dark"
+        }
+    },
+    "contact-form": {
+        "title": "Contact form",
+        "name": "Name",
+        "email": "E-mail",
+        "phone": "Phone",
+        "message": "Message",
+        "attachment": "Attachment",
+        "loading": "Loading...",
+        "send": "Send"
+    }
+}

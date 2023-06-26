@@ -113,7 +113,8 @@ Uma vez que a aplicação esteja executando, basta entrar com os seguintes coman
 - [x] Adicionar .eslintrc
 - [x] Adicionar .prettierc
 - [x] Adicionar tema escuro
-- [ ] Adicionar "React i18n next" (+ seletor de idioma)
+- [x] Adicionar "React i18n next"
+- [ ] Adicionar seletor de idioma
 - [ ] Adicionar responsividade
 - [ ] Implementar página de admin (visualizar contatos recebidos)
 - [ ] Implementar testes automatizados no Inertia.JS

@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Box, Stack, TextField, Typography } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import { get as _get } from 'lodash';
 import { router } from '@inertiajs/react';
 import LeadLayout from '@Layout/Lead';
@@ -12,10 +13,9 @@ import useNotification from '@Root/Hooks/notification';
 const Form: React.FC = (): JSX.Element => {
   const [loading, setLoading] = useState(false);
   const [fileName, setFileName] = useState('');
-
   const formRef = useRef<HTMLFormElement>(null);
   const inputFileRef = useRef<HTMLInputElement>(null);
-
+  const { t } = useTranslation();
   const notify = useNotification();
 
   const acceptedFiles =
@@ -92,13 +92,13 @@ const Form: React.FC = (): JSX.Element => {
               mb: '20px',
             }}
           >
-            Contact form
+            {t('contact-form.title')}
           </Typography>
-          <TextField label="Name" name="name" fullWidth />
-          <TextField label="E-mail" name="email" fullWidth />
-          <TextField label="Phone" name="phone" fullWidth />
+          <TextField label={t('contact-form.name')} name="name" fullWidth />
+          <TextField label={t('contact-form.email')} name="email" fullWidth />
+          <TextField label={t('contact-form.phone')} name="phone" fullWidth />
           <TextField
-            label="Message"
+            label={t('contact-form.message')}
             name="message"
             rows={4}
             multiline
@@ -106,14 +106,14 @@ const Form: React.FC = (): JSX.Element => {
           />
           <MuiUpload
             inputRef={inputFileRef}
-            label="Attachment"
+            label={t('contact-form.attachment')}
             fileName={fileName}
             fieldName="attachment"
             buttonVariant="outlined"
             onChange={handleFileChange}
           />
           <MuiButton variant="contained" type="submit" fullWidth>
-            {loading ? '...' : 'Send'}
+            {loading ? t('contact-form.loading') : t('contact-form.send')}
           </MuiButton>
         </Box>
       </Stack>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Divider, Drawer, Stack, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import { useTranslation } from 'react-i18next';
 import { ThemeSwitcher } from '@Component/_Global/ThemeSwitcher';
 
 type SettingsSidebarProps = {
@@ -9,6 +10,8 @@ type SettingsSidebarProps = {
 };
 
 const SettingsSidebar: React.FC<SettingsSidebarProps> = ({ open, onClose }) => {
+  const { t } = useTranslation();
+
   return (
     <Drawer anchor="right" open={open} onClose={onClose}>
       <Stack
@@ -17,7 +20,9 @@ const SettingsSidebar: React.FC<SettingsSidebarProps> = ({ open, onClose }) => {
         alignItems="center"
         p="15px 0 15px 15px"
       >
-        <Typography sx={{ fontWeight: 600 }}>Settings</Typography>
+        <Typography sx={{ fontWeight: 600 }}>
+          {t('settings-sidebar.title')}
+        </Typography>
         <Button onClick={onClose}>
           <CloseIcon />
         </Button>

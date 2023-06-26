@@ -1,0 +1,27 @@
+{
+    "about-app": {
+        "title": "Sobre \"Contactar\"",
+        "description": "Essa aplicação possui um exemplo de um formulário de contato",
+        "contact-page-btn": "Página de contato",
+        "fork-btn": "Fork me on Github"
+    },
+    "settings-sidebar": {
+        "title": "Configurações",
+        "theme-switcher": {
+            "title": "Tema",
+            "light-theme": "Claro",
+            "system-theme": "Sistema",
+            "dark-theme": "Escuro"
+        }
+    },
+    "contact-form": {
+        "title": "Formulário de contato",
+        "name": "Contato",
+        "email": "E-mail",
+        "phone": "Telefone",
+        "message": "Mensagem",
+        "attachment": "Anexo",
+        "loading": "Carregando...",
+        "send": "Enviar"
+    }
+}
