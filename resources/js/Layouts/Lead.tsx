@@ -1,20 +1,35 @@
 import React from 'react';
-import Header from '@Component/Leads/Header';
-import { Container, Stack } from '@mui/material';
+import { Box, Container, Stack, useTheme } from '@mui/material';
+import Header, { leadHeaderHeight } from '@Component/Leads/Header';
 import { NotificationsHandler } from '@Component/_Global/NotificationsHandler';
 
-interface LeadLayoutProps {
+type LeadLayoutProps = {
   children: React.ReactNode;
-}
+  fullHeight?: boolean;
+};
 
-const LeadLayout: React.FC<LeadLayoutProps> = ({ children }): JSX.Element => {
+const LeadLayout: React.FC<LeadLayoutProps> = ({
+  children,
+  fullHeight = false,
+}): JSX.Element => {
+  const isDarkMode = useTheme().palette.mode === 'dark';
+
   return (
     <>
       <NotificationsHandler />
       <Header />
-      <Container>
-        <Stack>{children}</Stack>
-      </Container>
+      <Box
+        sx={{
+          backgroundColor: isDarkMode ? '#2b2b2b' : '#ffffff',
+          minHeight: fullHeight
+            ? `calc(100vh - ${leadHeaderHeight})`
+            : 'initial',
+        }}
+      >
+        <Container>
+          <Stack>{children}</Stack>
+        </Container>
+      </Box>
     </>
   );
 };

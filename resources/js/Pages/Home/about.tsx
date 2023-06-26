@@ -5,7 +5,7 @@ import { MuiButton } from '@Component/_Global/MuiButton';
 
 const About: React.FC = () => {
   return (
-    <LeadLayout>
+    <LeadLayout fullHeight>
       <Paper sx={{ position: 'relative', mt: '15px', p: '15px' }}>
         <Typography component="h1" sx={{ fontSize: '22px', fontWeight: 600 }}>
           About "Contactar"

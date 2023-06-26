@@ -107,6 +107,14 @@ module.exports = {
                         '@Util',
                         path.resolve(__dirname, 'resources', 'js', 'Utils'),
                     ],
+                    [
+                        '@Style',
+                        path.resolve(__dirname, 'resources', 'js', 'Styles'),
+                    ],
+                    [
+                        '@Context',
+                        path.resolve(__dirname, 'resources', 'js', 'Contexts'),
+                    ],
                 ],
                 extensions: ['.js', '.jsx', '.ts', '.tsx'],
             },
