@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { AppBar, Box, Button, Stack, Toolbar, Typography } from '@mui/material';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import { MuiButton } from '@Component/_Global/MuiButton';
 import { SettingsSidebar } from './SettingsSidebar';
@@ -25,15 +26,29 @@ const Header = () => {
             alignItems="center"
           >
             <Box sx={{ height: '100%', mr: '10px' }}>
-              <MuiButton href="/" color="inherit" sx={{ height: '100%' }}>
+              <MuiButton
+                href="/"
+                color="inherit"
+                sx={{ height: '100%', minWidth: 'unset', p: 0 }}
+              >
                 <img
-                  src="/img/contactar-small.png"
-                  style={{ height: '100%' }}
+                  src="/img/contactar-smaller.png"
+                  style={{ height: 'auto' }}
                 />
               </MuiButton>
             </Box>
             <Typography variant="h6">Contactar</Typography>
-            <Stack>
+            <Stack direction="row" spacing={2}>
+              <MuiButton
+                color="info"
+                variant="outlined"
+                sx={{ minWidth: 'unset', p: '3px' }}
+                href="https://github.com/chsjr1996/contactar"
+                target="_blank"
+                externalHref
+              >
+                <GitHubIcon />
+              </MuiButton>
               <Button
                 color="inherit"
                 variant="outlined"

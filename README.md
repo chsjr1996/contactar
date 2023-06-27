@@ -115,7 +115,7 @@ Uma vez que a aplicação esteja executando, basta entrar com os seguintes coman
 - [x] Adicionar tema escuro
 - [x] Adicionar "React i18n next"
 - [x] Adicionar seletor de idioma
-- [ ] Adicionar responsividade
+- [x] Adicionar responsividade
 - [ ] Implementar Laravel Ziggy para "named routes"
 - [ ] Implementar página de admin (visualizar contatos recebidos)
 - [ ] Implementar testes automatizados no Inertia.JS
