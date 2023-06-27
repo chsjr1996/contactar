@@ -3,7 +3,7 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import { initReactI18next } from 'react-i18next';
 import translations from '@Root/_i18n';
 
-type AppLangs = 'en-US' | 'pt-BR';
+export type AppLangs = 'en-US' | 'pt-BR';
 
 const initializeI18n = (lang: AppLangs) => {
   const i18nConfig = {

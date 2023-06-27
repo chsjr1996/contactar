@@ -3,6 +3,7 @@ import { Button, Divider, Drawer, Stack, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { useTranslation } from 'react-i18next';
 import { ThemeSwitcher } from '@Component/_Global/ThemeSwitcher';
+import { LanguageSelector } from '@Component/_Global/LanguageSelector';
 
 type SettingsSidebarProps = {
   open: boolean;
@@ -30,6 +31,7 @@ const SettingsSidebar: React.FC<SettingsSidebarProps> = ({ open, onClose }) => {
       <Divider />
       <Stack width="360px" p="15px">
         <ThemeSwitcher />
+        <LanguageSelector />
       </Stack>
     </Drawer>
   );

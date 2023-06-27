@@ -97,6 +97,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Application available languages
+    |--------------------------------------------------------------------------
+    |
+    | The current available languages on this application. To add a new
+    | language you should add new translations files. You should check
+    | the resources/lang and resources/js/_i18n directories
+    |
+    */
+
+    'available_languages' => ['en-US', 'pt-BR'],
+
+    /*
+    |--------------------------------------------------------------------------
     | Faker Locale
     |--------------------------------------------------------------------------
     |

@@ -1,5 +1,6 @@
 import React, { createContext, useState } from 'react';
-import { PaletteMode, useMediaQuery } from '@mui/material';
+import { PaletteMode, ThemeProvider, useMediaQuery } from '@mui/material';
+import loadTheme from '@Style/theme';
 
 type ThemeModeContextProviderProps = {
   children: React.ReactNode;
@@ -41,11 +42,17 @@ const ThemeModeContextProvider: React.FC<ThemeModeContextProviderProps> = ({
     localStorage.setItem('@themeMode', mode);
   };
 
+  const contextValue = {
+    currentThemeMode,
+    changeCurrentThemeMode,
+    prefersDarkMode,
+  };
+
   return (
-    <ThemeModeContext.Provider
-      value={{ currentThemeMode, changeCurrentThemeMode, prefersDarkMode }}
-    >
-      {children}
+    <ThemeModeContext.Provider value={contextValue}>
+      <ThemeProvider theme={loadTheme(currentThemeMode, prefersDarkMode)}>
+        {children}
+      </ThemeProvider>
     </ThemeModeContext.Provider>
   );
 };

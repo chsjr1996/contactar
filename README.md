@@ -114,8 +114,9 @@ Uma vez que a aplicação esteja executando, basta entrar com os seguintes coman
 - [x] Adicionar .prettierc
 - [x] Adicionar tema escuro
 - [x] Adicionar "React i18n next"
-- [ ] Adicionar seletor de idioma
+- [x] Adicionar seletor de idioma
 - [ ] Adicionar responsividade
+- [ ] Implementar Laravel Ziggy para "named routes"
 - [ ] Implementar página de admin (visualizar contatos recebidos)
 - [ ] Implementar testes automatizados no Inertia.JS
 - [ ] Melhorias de código no Backend e Frontend (refatorção)

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\SettingsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +20,8 @@ Route::inertia('/', 'Home/about');
 Route::prefix('/contact')->group(function () {
     Route::inertia('/', 'Contact/form');
     Route::post('/', [ContactController::class, 'send'])->name('contact.send');
+});
+
+Route::prefix('/settings')->group(function () {
+    Route::post('/language', [SettingsController::class, 'switchLang'])->name('settings.switch.lang');
 });

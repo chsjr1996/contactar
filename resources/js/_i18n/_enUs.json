@@ -12,6 +12,11 @@
             "light-theme": "Light",
             "system-theme": "System",
             "dark-theme": "Dark"
+        },
+        "language-selector": {
+            "title": "Language",
+            "en-US": "English",
+            "pt-BR": "Portuguese"
         }
     },
     "contact-form": {
