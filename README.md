@@ -116,7 +116,7 @@ Uma vez que a aplicação esteja executando, basta entrar com os seguintes coman
 - [x] Adicionar "React i18n next"
 - [x] Adicionar seletor de idioma
 - [x] Adicionar responsividade
-- [ ] Implementar Laravel Ziggy para "named routes"
+- [x] Implementar Laravel Ziggy para "named routes"
 - [ ] Implementar página de admin (visualizar contatos recebidos)
 - [ ] Implementar testes automatizados no Inertia.JS
 - [ ] Melhorias de código no Backend e Frontend (refatorção)
