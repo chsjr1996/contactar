@@ -2,15 +2,22 @@ import React, { useRef, useState } from 'react';
 import { Box, Stack, TextField, Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { get as _get } from 'lodash';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { Errors, ErrorBag } from '@inertiajs/core';
 import { router } from '@inertiajs/react';
 import LeadLayout from '@Layout/Lead';
 import { leadHeaderHeight } from '@Component/Leads/Header';
 import { MuiButton } from '@Component/_Global/MuiButton';
 import { MuiUpload } from '@Component/Forms/MuiUpload';
 import { handleFormFields } from '@Util/FormHelpers';
-import useNotification from '@Root/Hooks/notification';
+import route from '@Util/Ziggy';
+import useNotification from '@Hook/notification';
 
-const Form: React.FC = (): JSX.Element => {
+type FormProps = {
+  errors: Errors & ErrorBag;
+};
+
+const Form: React.FC<FormProps> = ({ errors }): JSX.Element => {
   const [loading, setLoading] = useState(false);
   const [fileName, setFileName] = useState('');
   const formRef = useRef<HTMLFormElement>(null);
@@ -18,6 +25,7 @@ const Form: React.FC = (): JSX.Element => {
   const { t } = useTranslation();
   const notify = useNotification();
 
+  // TODO: Use it on file input...
   const acceptedFiles =
     'application/msword, text/plain, application/pdf, application/vnd.oasis.opendocument.text';
 
@@ -30,7 +38,7 @@ const Form: React.FC = (): JSX.Element => {
       inputFileRef.current.files = null;
     }
 
-    notify('Contact sent successfully', 'success');
+    notify(t('contact-form.success-notification'), 'success');
   };
 
   const handleSubmit = async (
@@ -53,7 +61,7 @@ const Form: React.FC = (): JSX.Element => {
       { formName: 'attachment', fieldRef: 'current.attachment.files.0' },
     ]);
 
-    router.post('/contact', formData, {
+    router.post(route('contact.send'), formData, {
       onSuccess: () => handleFormSuccess(),
       onFinish: (_visit) => setLoading(false),
     });
@@ -94,13 +102,33 @@ const Form: React.FC = (): JSX.Element => {
           >
             {t('contact-form.title')}
           </Typography>
-          <TextField label={t('contact-form.name')} name="name" fullWidth />
-          <TextField label={t('contact-form.email')} name="email" fullWidth />
-          <TextField label={t('contact-form.phone')} name="phone" fullWidth />
+          <TextField
+            label={t('contact-form.name')}
+            name="name"
+            error={!!errors.name}
+            helperText={errors.name}
+            fullWidth
+          />
+          <TextField
+            label={t('contact-form.email')}
+            name="email"
+            error={!!errors.email}
+            helperText={errors.email}
+            fullWidth
+          />
+          <TextField
+            label={t('contact-form.phone')}
+            name="phone"
+            error={!!errors.phone}
+            helperText={errors.phone}
+            fullWidth
+          />
           <TextField
             label={t('contact-form.message')}
             name="message"
             rows={4}
+            error={!!errors.message}
+            helperText={errors.message}
             multiline
             fullWidth
           />
@@ -111,6 +139,8 @@ const Form: React.FC = (): JSX.Element => {
             fieldName="attachment"
             buttonVariant="outlined"
             onChange={handleFileChange}
+            error={!!errors.attachment}
+            helperText={errors.attachment}
           />
           <MuiButton variant="contained" type="submit" fullWidth>
             {loading ? t('contact-form.loading') : t('contact-form.send')}

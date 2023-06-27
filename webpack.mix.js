@@ -18,6 +18,7 @@ mix
   .sass('resources/sass/app.scss', 'public/css')
   .disableNotifications();
 
+// TODO: port this to Mix v6 format (mix.alias({ ... }))
 mix.webpackConfig({
   resolve: {
     extensions: ['.js', '.jsx', 'ts', '.tsx'],

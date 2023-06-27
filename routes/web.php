@@ -15,10 +15,10 @@ use App\Http\Controllers\SettingsController;
 |
 */
 
-Route::inertia('/', 'Home/about');
+Route::inertia('/', 'Home/about')->name('homepage');
 
 Route::prefix('/contact')->group(function () {
-    Route::inertia('/', 'Contact/form');
+    Route::inertia('/', 'Contact/form')->name('contact.form');
     Route::post('/', [ContactController::class, 'send'])->name('contact.send');
 });
 

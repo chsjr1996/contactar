@@ -106,7 +106,7 @@ return [
     |
     */
 
-    'available_languages' => ['en-US', 'pt-BR'],
+    'available_languages' => ['en' => 'en-US', 'ptBr' => 'pt-BR'],
 
     /*
     |--------------------------------------------------------------------------

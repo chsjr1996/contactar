@@ -27,6 +27,7 @@
         "message": "Mensagem",
         "attachment": "Anexo",
         "loading": "Carregando...",
-        "send": "Enviar"
+        "send": "Enviar",
+        "success-notification": "Contato enviado com sucesso!"
     }
 }

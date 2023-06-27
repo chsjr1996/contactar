@@ -1,7 +1,6 @@
 import React from 'react';
 import { Box, Container, Stack, useTheme } from '@mui/material';
 import Header, { leadHeaderHeight } from '@Component/Leads/Header';
-import { NotificationsHandler } from '@Component/_Global/NotificationsHandler';
 
 type LeadLayoutProps = {
   children: React.ReactNode;
@@ -16,7 +15,6 @@ const LeadLayout: React.FC<LeadLayoutProps> = ({
 
   return (
     <>
-      <NotificationsHandler />
       <Header />
       <Box
         sx={{

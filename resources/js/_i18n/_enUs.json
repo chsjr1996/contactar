@@ -27,6 +27,7 @@
         "message": "Message",
         "attachment": "Attachment",
         "loading": "Loading...",
-        "send": "Send"
+        "send": "Send",
+        "success-notification": "Contact sent successfully!"
     }
 }

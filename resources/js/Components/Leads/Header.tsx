@@ -3,6 +3,7 @@ import { AppBar, Box, Button, Stack, Toolbar, Typography } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import { MuiButton } from '@Component/_Global/MuiButton';
+import route from '@Util/Ziggy';
 import { SettingsSidebar } from './SettingsSidebar';
 
 export const leadHeaderHeight = '80px';
@@ -27,7 +28,7 @@ const Header = () => {
           >
             <Box sx={{ height: '100%', mr: '10px' }}>
               <MuiButton
-                href="/"
+                href={route('homepage')}
                 color="inherit"
                 sx={{ height: '100%', minWidth: 'unset', p: 0 }}
               >

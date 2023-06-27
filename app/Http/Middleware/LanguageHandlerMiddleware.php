@@ -17,8 +17,9 @@ class LanguageHandlerMiddleware
     {
         $appLocale = session()->get('applocale');
 
-        if ($appLocale && array_key_exists($appLocale, config('app.available_languages'))) {
-            app()->setLocale($appLocale);
+        if ($appLocale && in_array($appLocale, config('app.available_languages'))) {
+            $resLang = array_flip(config('app.available_languages'))[$appLocale];
+            app()->setLocale($resLang);
         } else {
             app()->setLocale(config('app.fallback_locale'));
         }

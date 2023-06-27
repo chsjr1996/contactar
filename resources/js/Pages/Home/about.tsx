@@ -3,6 +3,7 @@ import { Paper, Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import LeadLayout from '@Layout/Lead';
 import { MuiButton } from '@Component/_Global/MuiButton';
+import route from '@Util/Ziggy';
 
 const About: React.FC = () => {
   const { t } = useTranslation();
@@ -22,7 +23,7 @@ const About: React.FC = () => {
         </Typography>
         <Typography>{t('about-app.description')}</Typography>
         <MuiButton
-          href="/contact"
+          href={route('contact.form')}
           variant="contained"
           color="primary"
           sx={{ mt: '15px', width: { xs: '100%', sm: 'unset' } }}

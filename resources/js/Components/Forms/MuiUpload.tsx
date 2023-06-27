@@ -13,6 +13,8 @@ type MuiUploadProps = {
   label: string;
   fieldName: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  error?: boolean;
+  helperText?: string;
   fileName?: string;
   buttonVariant?: 'outlined' | 'text' | 'contained';
   buttonSx?: SxProps<Theme>;
@@ -25,6 +27,8 @@ const MuiUpload: React.FC<MuiUploadProps> = ({
   label,
   fieldName,
   onChange,
+  error = false,
+  helperText = '',
   fileName = '',
   buttonVariant = 'text',
   buttonSx,
@@ -47,6 +51,7 @@ const MuiUpload: React.FC<MuiUploadProps> = ({
         startIcon={<UploadFileIcon />}
         variant={buttonVariant}
         sx={buttonSx}
+        color={error ? 'error' : 'primary'}
       >
         <Typography {...typographyProps}>{label}</Typography>
         <input
@@ -59,6 +64,19 @@ const MuiUpload: React.FC<MuiUploadProps> = ({
       </Button>
       {fileName && (
         <Typography {...fileNameTypographyProps}>{fileName}</Typography>
+      )}
+      {error && helperText && (
+        <Typography
+          component="small"
+          sx={{
+            color: '#f44336',
+            fontSize: '0.75rem',
+            fontWeight: 400,
+            m: '3px 0 14px 14px',
+          }}
+        >
+          {helperText}
+        </Typography>
       )}
     </Stack>
   );
